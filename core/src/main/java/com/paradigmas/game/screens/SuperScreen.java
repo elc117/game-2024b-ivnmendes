@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.paradigmas.game.Main;
 import com.paradigmas.game.ui.Button;
+import com.paradigmas.game.utils.LoadAssets;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +18,7 @@ public abstract class SuperScreen implements Screen {
     protected final Main game;
     protected Texture backgroundTexture;
     protected Music backgroundMusic;
-    protected ArrayList<Button> Buttons;
+    protected ArrayList<Button> buttons;
     protected Stage stage;
 
     @Setter protected float worldWidth;
@@ -31,21 +32,11 @@ public abstract class SuperScreen implements Screen {
 
         this.game = game;
 
-        try {
-            this.backgroundTexture = new Texture(backgroundTexturePath);
-        } catch (Exception e) {
-            throw new RuntimeException("Erro ao carregar textura: " + backgroundTexturePath, e);
-        }
+        this.backgroundTexture = LoadAssets.loadTexture(backgroundTexturePath);
 
-        try {
-            this.backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal(backgroundMusicPath));
-            backgroundMusic.setLooping(true);
-            backgroundMusic.setVolume(0.5F);
-        } catch (Exception e) {
-            throw new RuntimeException("Erro ao carregar música: " + backgroundMusicPath, e);
-        }
+        this.backgroundMusic = LoadAssets.loadMusic(backgroundMusicPath);
 
-        Buttons = new ArrayList<>();
+        buttons = new ArrayList<>();
     }
 
     @Override
@@ -64,7 +55,7 @@ public abstract class SuperScreen implements Screen {
     }
 
     public void addButton (Button button) {
-        Buttons.add(button);
+        buttons.add(button);
         stage.addActor(button.getButton());
     }
 
@@ -73,7 +64,7 @@ public abstract class SuperScreen implements Screen {
         if (backgroundTexture != null) backgroundTexture.dispose();
         if (backgroundMusic != null) backgroundMusic.dispose();
 
-        for(Button b : Buttons) {
+        for(Button b : buttons) {
             b.dispose();
         }
     }

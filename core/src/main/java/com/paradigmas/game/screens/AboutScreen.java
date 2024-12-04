@@ -7,10 +7,11 @@ import com.paradigmas.game.Main;
 
 import static com.paradigmas.game.utils.FontType.TITLE;
 
-public class GameScreen extends SuperScreen {
-    public GameScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
+public class AboutScreen extends SuperScreen {
+    public AboutScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
         super(game, backgroundTexturePath, backgroundMusicPath);
     }
+
     @Override
     public void draw(float delta) {
         ScreenUtils.clear(Color.BLACK);
@@ -23,14 +24,14 @@ public class GameScreen extends SuperScreen {
 
         GlyphLayout layout = new GlyphLayout(
             super.game.getFontHashMap().get(TITLE),
-            "Game Screen"
+            "About"
         );
         float textWidth = layout.width;
         float textHeight = layout.height;
 
         super.game.getFontHashMap().get(TITLE).draw(
             super.game.getBatch(),
-            "Game Screen",
+            "About",
             (worldWidth - textWidth) / 2,
             (worldHeight + textHeight) / 2 + 1.3f
         );

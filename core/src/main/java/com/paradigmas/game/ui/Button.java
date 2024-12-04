@@ -11,24 +11,26 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.paradigmas.game.Main;
+import com.paradigmas.game.utils.LoadAssets;
 import lombok.Getter;
 
+import static com.paradigmas.game.utils.FontType.*;
+
 public class Button {
-    private final Stage stage;
     @Getter private final TextButton button;
     private final Skin skin;
     private final TextureAtlas buttonAtlas;
 
-    public Button(Main game, String buttonText, float posX, float posY, ButtonAction action) {
-        stage = new Stage();
+    public Button(Main game, String buttonText, float posX, float posY, float buttonWidth, float buttonHeight, ButtonAction action) {
+        Stage stage = new Stage(game.getViewport());
         Gdx.input.setInputProcessor(stage);
 
-        skin = new Skin(Gdx.files.internal("ui/uiskin.json"));
-        buttonAtlas = new TextureAtlas(Gdx.files.internal("ui/uiskin.atlas"));
+        skin = LoadAssets.loadSkin("ui/uiskin.json");
+        buttonAtlas = LoadAssets.loadAtlas("ui/uiskin.atlas");
         skin.addRegions(buttonAtlas);
 
         TextButtonStyle textButtonStyle = new TextButtonStyle();
-        textButtonStyle.font = new BitmapFont();
+        textButtonStyle.font = game.getFontHashMap().get(BUTTON);
         textButtonStyle.up = skin.getDrawable("default-rect");  // Padrão da skin
         textButtonStyle.down = skin.getDrawable("default-rect");  // Padrão da skin
         textButtonStyle.checked = skin.getDrawable("default-rect");  // Padrão da skin
@@ -36,6 +38,7 @@ public class Button {
         button = new TextButton(buttonText, textButtonStyle);
 
         button.setPosition(posX, posY);
+        button.setSize(buttonWidth, buttonHeight);
 
         button.addListener(new ChangeListener() {
             @Override
@@ -45,15 +48,6 @@ public class Button {
         });
 
         stage.addActor(button);
-    }
-
-    public void addClickListener(ChangeListener listener) {
-        button.addListener(listener);
-    }
-
-    public void render() {
-        stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-        stage.draw();
     }
 
     public void dispose() {
