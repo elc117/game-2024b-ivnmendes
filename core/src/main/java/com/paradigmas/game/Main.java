@@ -1,36 +1,37 @@
 package com.paradigmas.game;
 
-import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.paradigmas.game.screens.MainMenuScreen;
+import lombok.Getter;
 
-/** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
-public class Main implements ApplicationListener {
+@Getter
+public class Main extends Game {
+    private SpriteBatch batch;
+    private FitViewport viewport;
+    private BitmapFont font;
+
     @Override
     public void create() {
-        // Prepare your application here.
+        batch = new SpriteBatch();
+        font = new BitmapFont();
+        viewport = new FitViewport(8, 5);
+
+        font.setUseIntegerPositions(false);
+        font.getData().setScale(viewport.getWorldHeight() / Gdx.graphics.getHeight());
+
+        this.setScreen(new MainMenuScreen(this, "images/background.jpg", "sounds/backgroundMusic.mp3"));
     }
 
-    @Override
-    public void resize(int width, int height) {
-        // Resize your application here. The parameters represent the new window size.
-    }
-
-    @Override
     public void render() {
-        // Draw your application here.
+        super.render();
     }
 
-    @Override
-    public void pause() {
-        // Invoked when your application is paused.
-    }
-
-    @Override
-    public void resume() {
-        // Invoked when your application is resumed after pause.
-    }
-
-    @Override
     public void dispose() {
-        // Destroy application's resources here.
+        batch.dispose();
+        font.dispose();
     }
 }
