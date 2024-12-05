@@ -13,14 +13,14 @@ import com.paradigmas.game.questions.Question;
 import com.paradigmas.game.questions.Quiz;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
+import com.paradigmas.game.utils.BattleStatus;
 import com.paradigmas.game.utils.LoadAssets;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Scanner;
-
 import static com.paradigmas.game.utils.FontType.*;
 import static com.paradigmas.game.utils.ScreenType.*;
+import static com.paradigmas.game.utils.BattleStatus.*;
 
 @Getter
 public class BattleScreen extends SuperScreen {
@@ -30,7 +30,11 @@ public class BattleScreen extends SuperScreen {
     private final Sprite uiTextSprite;
     private final Sprite uiLifeBarSprite;
     private final Sprite uiQuestionSprite;
+    private BattleStatus status;
     private Question actualQuestion;
+    private boolean isCorrect;
+    private float timePassed;
+
     public BattleScreen(Main game, String backgroundTexturePath, String backgroundMusicPath, Quiz quiz, Enemy enemy, Paradigmer paradigmer) {
         super(game, backgroundTexturePath, backgroundMusicPath);
         uiTextSprite = LoadAssets.loadSprite("sprites/uiMenu.png", 17, 3);
@@ -39,6 +43,8 @@ public class BattleScreen extends SuperScreen {
         this.quiz = quiz;
         this.enemy = enemy;
         this.paradigmer = paradigmer;
+
+        status = WAITING_ANSWER;
         actualQuestion = quiz.getQuestion();
 
         float buttonDistanceY = 0;
@@ -47,8 +53,8 @@ public class BattleScreen extends SuperScreen {
             float buttonDistanceX = 0;
 
             for (int j = 0; j < 2; j++) {
-                int option = cont;
-                ButtonAction action = () -> System.out.println(option);
+                int option = cont + 1;
+                ButtonAction action = () -> questionAnswered(option);
 
                 Button button = new Button(
                     super.game,
@@ -100,15 +106,19 @@ public class BattleScreen extends SuperScreen {
             worldHeight
         );
 
+        //sprite inimigo
         enemy.getSprite().setPosition(super.worldWidth/2 + 0.5f, super.worldHeight/2 - 0.9f);
         enemy.getSprite().draw(game.getBatch());
 
+        //sprite paradigmer
         paradigmer.getSprite().setPosition(super.worldWidth/2 - 5.5f, super.worldHeight/2 - 3.5f);
         paradigmer.getSprite().draw(game.getBatch());
 
+        //caixa onde o texto fica
         uiTextSprite.setPosition(-0.4f, -0.4f);
         uiTextSprite.draw(game.getBatch());
 
+        //barra de vida do inimigo
         uiLifeBarSprite.setPosition(0, super.worldHeight - 2);
         uiLifeBarSprite.draw(game.getBatch());
         super.game.getFontHashMap().get(TEXT_BATTLE).draw(
@@ -118,6 +128,7 @@ public class BattleScreen extends SuperScreen {
             super.worldHeight - 0.5f
         );
 
+        //Barra de vida do jogador
         uiLifeBarSprite.setPosition(super.worldWidth - 4.6f, 2.9f);
         uiLifeBarSprite.draw(game.getBatch());
         super.game.getFontHashMap().get(TEXT_BATTLE).draw(
@@ -133,24 +144,66 @@ public class BattleScreen extends SuperScreen {
             3.57f
         );
 
-        uiQuestionSprite.setPosition(super.worldWidth - 7.69f, -0.6f);
-        uiQuestionSprite.draw(game.getBatch());
+        if (status == WAITING_ANSWER) {
+            //caixa de respostas
+            uiQuestionSprite.setPosition(super.worldWidth - 7.69f, -0.6f);
+            uiQuestionSprite.draw(game.getBatch());
+        }
 
-        drawTextMultiline(actualQuestion.getQuestion(), 7.5f);
+        //talvez tenha ficado meio confuso
+        String textToDraw = (status == WAITING_ANSWER) ?
+            actualQuestion.getQuestion()
+            :
+            (isCorrect) ?
+                String.format("Resposta correta! %d acertos consecutivos!", paradigmer.getConsecutiveHits())
+                :
+                "Resposta errada!";
+
+        drawTextMultiline(textToDraw, 7.5f);
 
         super.game.getBatch().end();
 
-        super.stage.act(
-            Math.min(
-                Gdx.graphics.getDeltaTime(), 1 / 30f
-            )
-        );
-        super.stage.draw();
+        if (status == WAITING_ANSWER) {
+            super.stage.act(
+                Math.min(
+                    Gdx.graphics.getDeltaTime(), 1 / 30f
+                )
+            );
+            super.stage.draw();
+        }
     }
 
     @Override
     public void logic(float delta) {
+        float deltaTime = Gdx.graphics.getDeltaTime();
 
+        switch (status) {
+            case ANSWERED:
+                if (isCorrect) {
+                    paradigmer.hit();
+                    enemy.causeDamage(paradigmer.getConsecutiveHits());
+                } else {
+                    paradigmer.causeDamage();
+                }
+
+                timePassed += deltaTime;
+
+                status = WAITING_NEXT_QUESTION;
+                break;
+            case WAITING_NEXT_QUESTION:
+                timePassed += deltaTime;
+
+                if (timePassed >= 5f) {
+                    actualQuestion = quiz.getQuestion();
+                    status = WAITING_ANSWER;
+                }
+                break;
+        }
+
+        if (paradigmer.getLife() == 0) {
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa");
+            super.game.getScreenManager().showScreen(MAIN_SCREEN);
+        }
     }
 
     @Override
@@ -193,5 +246,11 @@ public class BattleScreen extends SuperScreen {
             alignment,
             true
         );
+    }
+
+    private void questionAnswered(int option) {
+        isCorrect = actualQuestion.answerQuestion(option);
+        status = ANSWERED;
+        timePassed = 0f;
     }
 }
