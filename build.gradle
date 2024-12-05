@@ -7,11 +7,40 @@ buildscript {
     google()
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+    maven { url "https://plugins.gradle.org/m2/" }
   }
   dependencies {
-
-
   }
+}
+
+plugins {
+  id 'java-library'
+  id 'eclipse'
+  id 'idea'
+}
+
+repositories {
+  mavenCentral()
+  maven { url 'https://s01.oss.sonatype.org' }
+  maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+  maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+  mavenLocal()
+  google()
+}
+
+tasks.register('generateAssetList') {
+  inputs.dir("${project.rootDir}/assets/")
+  File assetsFolder = new File("${project.rootDir}/assets/")
+  File assetsFile = new File(assetsFolder, "assets.txt")
+  assetsFile.delete()
+  fileTree(assetsFolder).collect { assetsFolder.relativePath(it) }.sort().each {
+    assetsFile.append(it + "\n")
+  }
+}
+processResources.dependsOn 'generateAssetList'
+
+compileJava {
+  options.incremental = true
 }
 
 allprojects {
@@ -67,6 +96,14 @@ subprojects {
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
     maven { url 'https://jitpack.io' }
+  }
+
+  dependencies {
+    implementation 'org.projectlombok:lombok:1.18.30' // Lombok
+    annotationProcessor 'org.projectlombok:lombok:1.18.30' // Annotation Processor
+    implementation "com.badlogicgames.gdx:gdx:1.13.0"
+    implementation "com.badlogicgames.gdx:gdx-freetype:1.13.0"
+    implementation "com.badlogicgames.gdx:gdx-freetype-platform:1.13.0:natives-desktop"
   }
 }
 
