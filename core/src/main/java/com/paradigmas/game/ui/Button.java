@@ -1,11 +1,7 @@
 package com.paradigmas.game.ui;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -22,18 +18,15 @@ public class Button {
     private final TextureAtlas buttonAtlas;
 
     public Button(Main game, String buttonText, float posX, float posY, float buttonWidth, float buttonHeight, ButtonAction action) {
-        Stage stage = new Stage(game.getViewport());
-        Gdx.input.setInputProcessor(stage);
-
         skin = LoadAssets.loadSkin("ui/uiskin.json");
         buttonAtlas = LoadAssets.loadAtlas("ui/uiskin.atlas");
         skin.addRegions(buttonAtlas);
 
         TextButtonStyle textButtonStyle = new TextButtonStyle();
         textButtonStyle.font = game.getFontHashMap().get(BUTTON);
-        textButtonStyle.up = skin.getDrawable("default-rect");  // Padrão da skin
-        textButtonStyle.down = skin.getDrawable("default-rect");  // Padrão da skin
-        textButtonStyle.checked = skin.getDrawable("default-rect");  // Padrão da skin
+        textButtonStyle.up = skin.getDrawable("default-rect");
+        textButtonStyle.down = skin.getDrawable("default-rect");
+        textButtonStyle.checked = skin.getDrawable("default-rect");
 
         button = new TextButton(buttonText, textButtonStyle);
 
@@ -46,8 +39,6 @@ public class Button {
                 action.execute();
             }
         });
-
-        stage.addActor(button);
     }
 
     public void dispose() {

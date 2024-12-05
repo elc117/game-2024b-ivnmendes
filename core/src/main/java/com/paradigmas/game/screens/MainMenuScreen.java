@@ -9,6 +9,7 @@ import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
 
 import static com.paradigmas.game.utils.FontType.TITLE;
+import static com.paradigmas.game.utils.ScreenType.*;
 
 public class MainMenuScreen extends SuperScreen {
     private String teste = "Hello World";
@@ -17,24 +18,24 @@ public class MainMenuScreen extends SuperScreen {
 
         String[] textButtons = {"Jogar", "Sobre", "Sair"};
         ButtonAction[] action = {
-            () -> super.game.setScreen(new GameScreen(game, backgroundTexturePath, backgroundMusicPath)),
-            () -> super.game.setScreen(new AboutScreen(game, backgroundTexturePath, backgroundMusicPath)),
+            () -> super.game.getScreenManager().showScreen(SELECT_SCREEN),
+            () -> super.game.getScreenManager().showScreen(ABOUT_SCREEN),
             () -> Gdx.app.exit()
         };
 
         float buttonDistance = 0;
         for (int i = 0; i < 3; i++) {
             Button button = new Button(
-                game,
+                super.game,
                 textButtons[i],
-                super.worldWidth / 2 + 400 ,
-                super.worldHeight / 2 + buttonDistance + 400,
-                200,
-                100,
+                super.worldWidth / 2 - 1f,
+                super.worldHeight / 2 + buttonDistance,
+                2f,
+                1f,
                 action[i]
             );
             super.addButton(button);
-            buttonDistance -= 150;
+            buttonDistance -= 1.5f;
         }
 
     }
@@ -75,17 +76,17 @@ public class MainMenuScreen extends SuperScreen {
             super.game.getBatch(),
             teste,
             (worldWidth - textWidth) / 2,
-            (worldHeight + textHeight) / 2 + 1.3f
+            (worldHeight + textHeight) / 2 + 2f
         );
 
         super.game.getBatch().end();
 
-        stage.act(
+        super.stage.act(
             Math.min(
                 Gdx.graphics.getDeltaTime(), 1 / 30f
             )
         );
-        stage.draw();
+        super.stage.draw();
     }
 
     @Override

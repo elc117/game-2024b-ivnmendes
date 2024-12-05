@@ -1,15 +1,66 @@
 package com.paradigmas.game.screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.paradigmas.game.Main;
+import lombok.Getter;
+import lombok.Setter;
 
+import static com.paradigmas.game.utils.FontType.*;
+
+@Getter
+@Setter
 public class BattleScreen extends SuperScreen {
-    public BattleScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
+    private String title;
+    public BattleScreen(Main game, String backgroundTexturePath, String backgroundMusicPath, String title) {
         super(game, backgroundTexturePath, backgroundMusicPath);
+        this.title = title;
     }
 
     @Override
     public void draw(float delta) {
+        ScreenUtils.clear(Color.BLACK);
+        super.game.getViewport().apply();
+        super.game.getBatch().setProjectionMatrix(
+            super.game.getViewport().getCamera().combined
+        );
 
+        super.game.getBatch().begin();
+
+        drawTextMultiline(title, 6.5f);
+
+        super.game.getBatch().end();
+
+        super.stage.act(
+            Math.min(
+                Gdx.graphics.getDeltaTime(), 1 / 30f
+            )
+        );
+        super.stage.draw();
+    }
+
+    private void drawTextMultiline(String text, float targetWidth) {
+        GlyphLayout layout = new GlyphLayout(
+            super.game.getFontHashMap().get(TITLE),
+            text
+        );
+        float textWidth = layout.width;
+        float textHeight = layout.height;
+        float x = (worldWidth - textWidth) / 2 + 2;
+        float y = (worldHeight + textHeight) / 2 + 2.1f;
+        int alignment = Align.left;
+        super.game.getFontHashMap().get(TITLE).draw(
+            super.game.getBatch(),
+            text,
+            x,
+            y,
+            targetWidth,
+            alignment,
+            true
+        );
     }
 
     @Override

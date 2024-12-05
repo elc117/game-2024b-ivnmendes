@@ -1,15 +1,33 @@
 package com.paradigmas.game.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.paradigmas.game.Main;
+import com.paradigmas.game.ui.Button;
+import com.paradigmas.game.ui.ButtonAction;
 
 import static com.paradigmas.game.utils.FontType.TITLE;
+import static com.paradigmas.game.utils.ScreenType.MAIN_SCREEN;
 
 public class AboutScreen extends SuperScreen {
     public AboutScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
         super(game, backgroundTexturePath, backgroundMusicPath);
+
+        String text = "<-";
+        ButtonAction action = () -> super.game.getScreenManager().showScreen(MAIN_SCREEN);
+        Button button = new Button(
+            super.game,
+            text,
+            super.getWorldWidth() - 1,
+            0,
+            1.3f,
+            1f,
+            action
+        );
+
+        super.addButton(button);
     }
 
     @Override
@@ -24,7 +42,7 @@ public class AboutScreen extends SuperScreen {
 
         GlyphLayout layout = new GlyphLayout(
             super.game.getFontHashMap().get(TITLE),
-            "About"
+            "Sobre"
         );
         float textWidth = layout.width;
         float textHeight = layout.height;
@@ -33,10 +51,17 @@ public class AboutScreen extends SuperScreen {
             super.game.getBatch(),
             "About",
             (worldWidth - textWidth) / 2,
-            (worldHeight + textHeight) / 2 + 1.3f
+            worldHeight
         );
 
         super.game.getBatch().end();
+
+        super.stage.act(
+            Math.min(
+                Gdx.graphics.getDeltaTime(), 1 / 30f
+            )
+        );
+        super.stage.draw();
     }
 
     @Override
@@ -46,7 +71,7 @@ public class AboutScreen extends SuperScreen {
 
     @Override
     public void show() {
-
+        Gdx.input.setInputProcessor(super.stage);
     }
 
     @Override

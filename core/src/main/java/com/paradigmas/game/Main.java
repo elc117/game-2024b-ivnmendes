@@ -5,9 +5,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.paradigmas.game.screens.AboutScreen;
+import com.paradigmas.game.screens.GameScreen;
 import com.paradigmas.game.screens.MainMenuScreen;
+import com.paradigmas.game.screens.ScreenManager;
 import com.paradigmas.game.utils.FontType;
 import com.paradigmas.game.utils.LoadAssets;
+
+import static com.paradigmas.game.utils.ScreenType.*;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -19,17 +24,52 @@ public class Main extends Game {
     private SpriteBatch batch;
     private FitViewport viewport;
     private HashMap<FontType, BitmapFont> fontHashMap;
+    private ScreenManager screenManager;
 
     @Override
     public void create() {
+        screenManager = new ScreenManager(this);
+
         batch = new SpriteBatch();
 
-        viewport = new FitViewport(8, 5);
+        viewport = new FitViewport(16, 9);
 
         fontHashMap = new HashMap<>();
         initializeFonts(fontHashMap);
 
-        this.setScreen(new MainMenuScreen(this, "images/background.jpg", "sounds/backgroundMusic.mp3"));
+        createScreens(screenManager);
+
+        screenManager.showScreen(MAIN_SCREEN);
+
+    }
+
+    private void createScreens(ScreenManager screenManager) {
+        screenManager.addScreen(
+            MAIN_SCREEN,
+            new MainMenuScreen(
+                this,
+                "images/background.jpg",
+                "sounds/backgroundMusic.mp3"
+            )
+        );
+
+        screenManager.addScreen(
+            SELECT_SCREEN,
+            new GameScreen(
+                this,
+                "images/background.jpg",
+                "sounds/backgroundMusic.mp3"
+            )
+        );
+
+        screenManager.addScreen(
+            ABOUT_SCREEN,
+            new AboutScreen(
+                this,
+                "images/background.jpg",
+                "sounds/backgroundMusic.mp3"
+            )
+        );
     }
 
     private void initializeFonts(HashMap<FontType, BitmapFont> fontHashMap) {
@@ -45,12 +85,6 @@ public class Main extends Game {
                 viewport.getWorldHeight() / Gdx.graphics.getHeight()
             );
         }
-
-        // Gambiarra
-        fontHashMap.get(BUTTON).getData().setScale(
-            1,
-            1
-        );
     }
 
     public void render() {

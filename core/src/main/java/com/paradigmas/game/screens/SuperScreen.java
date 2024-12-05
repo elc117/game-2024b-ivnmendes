@@ -28,7 +28,7 @@ public abstract class SuperScreen implements Screen {
         worldWidth = game.getViewport().getWorldWidth();
         worldHeight = game.getViewport().getWorldHeight();
 
-        stage = new Stage();
+        stage = new Stage(game.getViewport());
 
         this.game = game;
 
@@ -51,7 +51,11 @@ public abstract class SuperScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
+        worldWidth = game.getViewport().getWorldWidth();
+        worldHeight = game.getViewport().getWorldHeight();
+
         game.getViewport().update(width, height, true);
+        stage.getViewport().update(width, height, true);
     }
 
     public void addButton (Button button) {
