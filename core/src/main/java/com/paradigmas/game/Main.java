@@ -2,6 +2,7 @@ package com.paradigmas.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -9,6 +10,8 @@ import com.paradigmas.game.screens.*;
 import com.paradigmas.game.utils.FontType;
 import com.paradigmas.game.utils.LoadAssets;
 
+import static com.badlogic.gdx.graphics.Color.BLACK;
+import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.paradigmas.game.utils.ScreenType.*;
 import lombok.Getter;
 
@@ -81,11 +84,11 @@ public class Main extends Game {
     private void initializeFonts(HashMap<FontType, BitmapFont> fontHashMap) {
         String path = "font/font.TTF";
         FontType[] fontTypes = FontType.values();
-        int[] sizes = {20, 100, 20};
+        Color[] colorTypes = {BLACK, WHITE, WHITE, WHITE};
+        int[] sizes = {30, 40, 100, 20};
 
-        // Inicializa as fontes e seta a escala para se adequar ao vieport
-        for (int i = 0; i < 3; i++) {
-            fontHashMap.put(fontTypes[i], LoadAssets.loadFont(path, sizes[i]));
+        for (int i = 0; i < 4; i++) {
+            fontHashMap.put(fontTypes[i], LoadAssets.loadFont(path, sizes[i], colorTypes[i]));
             fontHashMap.get(fontTypes[i]).setUseIntegerPositions(false);
             fontHashMap.get(fontTypes[i]).getData().setScale(
                 viewport.getWorldHeight() / Gdx.graphics.getHeight()

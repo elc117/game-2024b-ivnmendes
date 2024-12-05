@@ -48,11 +48,12 @@ public abstract class LoadAssets {
         }
     }
 
-    public static BitmapFont loadFont(String path, int fontSize){
+    public static BitmapFont loadFont(String path, int fontSize, Color color){
         try {
             FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(path));
             FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
+            parameter.color = color;
             parameter.size = fontSize;
 
             BitmapFont font = generator.generateFont(parameter);

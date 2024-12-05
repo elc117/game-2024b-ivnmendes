@@ -42,7 +42,7 @@ public class MainMenuScreen extends SuperScreen {
 
     @Override
     public void show() {
-        super.backgroundMusic.play();
+//        super.backgroundMusic.play();
         Gdx.input.setInputProcessor(super.stage);
     }
 
