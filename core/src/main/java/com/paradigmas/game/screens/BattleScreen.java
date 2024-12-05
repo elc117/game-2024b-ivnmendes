@@ -6,21 +6,29 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.paradigmas.game.Main;
+import com.paradigmas.game.entities.Enemy;
+import com.paradigmas.game.entities.Paradigmer;
+import com.paradigmas.game.questions.Quiz;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Scanner;
+
 import static com.paradigmas.game.utils.FontType.*;
 import static com.paradigmas.game.utils.ScreenType.*;
 
 @Getter
-@Setter
 public class BattleScreen extends SuperScreen {
-    private String title;
-    public BattleScreen(Main game, String backgroundTexturePath, String backgroundMusicPath, String title) {
+    private final Quiz quiz;
+    private final Enemy enemy;
+    private final Paradigmer paradigmer;
+    public BattleScreen(Main game, String backgroundTexturePath, String backgroundMusicPath, Quiz quiz, Enemy enemy, Paradigmer paradigmer) {
         super(game, backgroundTexturePath, backgroundMusicPath);
-        this.title = title;
+        this.quiz = quiz;
+        this.enemy = enemy;
+        this.paradigmer = paradigmer;
 
         String text = "Pause";
         ButtonAction action = () -> super.game.getScreenManager().showScreen(PAUSE_SCREEN);
@@ -55,7 +63,11 @@ public class BattleScreen extends SuperScreen {
             worldHeight
         );
 
-        drawTextMultiline(title, 6.5f);
+        enemy.getSprite().setPosition(super.worldWidth/2 + 0.5f, super.worldHeight/2 - 0.9f);
+        enemy.getSprite().draw(game.getBatch());
+
+        paradigmer.getSprite().setPosition(super.worldWidth/2 - 5.5f, super.worldHeight/2 - 3.9f);
+        paradigmer.getSprite().draw(game.getBatch());
 
         super.game.getBatch().end();
 
@@ -65,27 +77,6 @@ public class BattleScreen extends SuperScreen {
             )
         );
         super.stage.draw();
-    }
-
-    private void drawTextMultiline(String text, float targetWidth) {
-        GlyphLayout layout = new GlyphLayout(
-            super.game.getFontHashMap().get(TITLE),
-            text
-        );
-        float textWidth = layout.width;
-        float textHeight = layout.height;
-        float x = (worldWidth - textWidth) / 2 + 2;
-        float y = (worldHeight + textHeight) / 2 + 2.1f;
-        int alignment = Align.left;
-        super.game.getFontHashMap().get(TITLE).draw(
-            super.game.getBatch(),
-            text,
-            x,
-            y,
-            targetWidth,
-            alignment,
-            true
-        );
     }
 
     @Override

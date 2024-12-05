@@ -6,8 +6,11 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.paradigmas.game.Main;
+import com.paradigmas.game.entities.Enemy;
+import com.paradigmas.game.entities.Paradigmer;
 import com.paradigmas.game.ui.ButtonAction;
 import com.paradigmas.game.ui.Button;
+import com.paradigmas.game.ui.QuizGenerator;
 import com.paradigmas.game.utils.ScreenType;
 
 import java.util.HashMap;
@@ -23,7 +26,8 @@ public class GameScreen extends SuperScreen {
         float buttonDistance = 0;
         for (int i = 1; i < 4; i++) {
             String title = String.format("Fase %d", i);
-            ButtonAction action = () -> setBattleScreen(battleBackgroundPath, backgroundMusicPath, title);
+            int option = i - 1;
+            ButtonAction action = () -> setBattleScreen(battleBackgroundPath, backgroundMusicPath, option);
             Button button = new Button(
                 super.game,
                 title,
@@ -133,12 +137,17 @@ public class GameScreen extends SuperScreen {
         super.dispose();
     }
 
-    private void setBattleScreen(String backgroundTexturePath, String backgroundMusicPath, String title) {
+    private void setBattleScreen(String backgroundTexturePath, String backgroundMusicPath, int option) {
         ScreenManager screenManager = super.game.getScreenManager();
         HashMap<ScreenType, SuperScreen> screens = screenManager.getScreens();
         screens.remove(BATTLE_SCREEN);
 
-        BattleScreen battleScreen = new BattleScreen(super.game, backgroundTexturePath, backgroundMusicPath, title);
+        String[] enemySpritePath = {"sprites/treecko.png", "sprites/charmander.png", "sprites/abra.png"};
+        String[] enemyName = {"treecko", "charmander", "abra"};
+
+        Enemy enemy = new Enemy(enemyName[option], enemySpritePath[option]);
+        Paradigmer paradigmer = new Paradigmer("Paradigmer", "sprites/paradigmer.png");
+        BattleScreen battleScreen = new BattleScreen(super.game, backgroundTexturePath, backgroundMusicPath, QuizGenerator.quizGenerate(option), enemy, paradigmer);
         screens.put(BATTLE_SCREEN, battleScreen);
         screenManager.showScreen(BATTLE_SCREEN);
     }
