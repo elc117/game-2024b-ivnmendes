@@ -5,10 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.paradigmas.game.screens.AboutScreen;
-import com.paradigmas.game.screens.GameScreen;
-import com.paradigmas.game.screens.MainMenuScreen;
-import com.paradigmas.game.screens.ScreenManager;
+import com.paradigmas.game.screens.*;
 import com.paradigmas.game.utils.FontType;
 import com.paradigmas.game.utils.LoadAssets;
 
@@ -65,6 +62,15 @@ public class Main extends Game {
         screenManager.addScreen(
             ABOUT_SCREEN,
             new AboutScreen(
+                this,
+                "images/background.jpg",
+                "sounds/backgroundMusic.mp3"
+            )
+        );
+
+        screenManager.addScreen(
+            PAUSE_SCREEN,
+            new PauseScreen(
                 this,
                 "images/background.jpg",
                 "sounds/backgroundMusic.mp3"

@@ -6,10 +6,13 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.paradigmas.game.Main;
+import com.paradigmas.game.ui.Button;
+import com.paradigmas.game.ui.ButtonAction;
 import lombok.Getter;
 import lombok.Setter;
 
 import static com.paradigmas.game.utils.FontType.*;
+import static com.paradigmas.game.utils.ScreenType.*;
 
 @Getter
 @Setter
@@ -18,6 +21,20 @@ public class BattleScreen extends SuperScreen {
     public BattleScreen(Main game, String backgroundTexturePath, String backgroundMusicPath, String title) {
         super(game, backgroundTexturePath, backgroundMusicPath);
         this.title = title;
+
+        String text = "Pause";
+        ButtonAction action = () -> super.game.getScreenManager().showScreen(PAUSE_SCREEN);
+        Button button = new Button(
+            super.game,
+            text,
+            super.getWorldWidth() - 1,
+            super.getWorldHeight() - 1,
+            1.3f,
+            1f,
+            action
+        );
+
+        super.addButton(button);
     }
 
     @Override
@@ -29,6 +46,14 @@ public class BattleScreen extends SuperScreen {
         );
 
         super.game.getBatch().begin();
+
+        super.game.getBatch().draw(
+            backgroundTexture,
+            0,
+            0,
+            worldWidth,
+            worldHeight
+        );
 
         drawTextMultiline(title, 6.5f);
 
@@ -70,7 +95,7 @@ public class BattleScreen extends SuperScreen {
 
     @Override
     public void show() {
-
+        Gdx.input.setInputProcessor(super.stage);
     }
 
     @Override

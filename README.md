@@ -15,3 +15,4 @@
 * config fonte para web https://github.com/intrigus/gdx-freetype-gwt
 * https://stackoverflow.com/questions/44744047/load-bitmapfont-android-libgdx
 * https://chatgpt.com/share/6750ec40-9a38-8010-9cf3-24a4096514b6
+* https://br.pinterest.com/pin/1137299712132331616/

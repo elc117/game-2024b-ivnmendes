@@ -19,10 +19,11 @@ public class GameScreen extends SuperScreen {
     public GameScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
         super(game, backgroundTexturePath, backgroundMusicPath);
 
+        String battleBackgroundPath = "images/battleBackground.jpg";
         float buttonDistance = 0;
         for (int i = 1; i < 4; i++) {
             String title = String.format("Fase %d", i);
-            ButtonAction action = () -> setBattleScreen(backgroundTexturePath, backgroundMusicPath, title);
+            ButtonAction action = () -> setBattleScreen(battleBackgroundPath, backgroundMusicPath, title);
             Button button = new Button(
                 super.game,
                 title,
