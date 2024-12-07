@@ -75,19 +75,7 @@ public class GameScreen extends SuperScreen {
             worldHeight
         );
 
-        drawTextMultiline("Selecione uma fase: ", super.worldWidth);
-
-        super.game.getBatch().end();
-
-        super.stage.act(
-            Math.min(
-                Gdx.graphics.getDeltaTime(), 1 / 30f
-            )
-        );
-        super.stage.draw();
-    }
-
-    private void drawTextMultiline(String text, float targetWidth) {
+        String text = "Selecione uma fase:";
         GlyphLayout layout = new GlyphLayout(
             super.game.getFontHashMap().get(TITLE),
             text
@@ -96,6 +84,7 @@ public class GameScreen extends SuperScreen {
         float textHeight = layout.height;
         float x = (worldWidth - textWidth) / 2 + 2;
         float y = (worldHeight + textHeight) / 2 + 3.5f;
+        float targetWidth = super.worldWidth;
         int alignment = Align.left;
         super.game.getFontHashMap().get(TITLE).draw(
             super.game.getBatch(),
@@ -106,6 +95,15 @@ public class GameScreen extends SuperScreen {
             alignment,
             true
         );
+
+        super.game.getBatch().end();
+
+        super.stage.act(
+            Math.min(
+                Gdx.graphics.getDeltaTime(), 1 / 30f
+            )
+        );
+        super.stage.draw();
     }
 
     @Override

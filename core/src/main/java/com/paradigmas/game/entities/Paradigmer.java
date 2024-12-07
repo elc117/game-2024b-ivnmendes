@@ -29,4 +29,8 @@ public class Paradigmer extends Character {
     public void hit() {
         consecutiveHits++;
     }
+
+    public void miss() {
+        consecutiveHits = 0;
+    }
 }

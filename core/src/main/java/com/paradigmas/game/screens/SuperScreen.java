@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 import com.paradigmas.game.Main;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.utils.LoadAssets;
@@ -61,6 +63,16 @@ public abstract class SuperScreen implements Screen {
     public void addButton (Button button) {
         buttons.add(button);
         stage.addActor(button.getButton());
+    }
+
+    // Remove todos os botões a partir de firstButton
+    public void removeButtons(int firstButton) {
+        Array<Actor> buttonActors = stage.getActors();
+        buttonActors.removeRange(firstButton, buttonActors.size - 1);
+        for (int i = firstButton; i < buttons.size(); i++) {
+            Button button = buttons.remove(i);
+            button.dispose();
+        }
     }
 
     @Override

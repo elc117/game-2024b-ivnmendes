@@ -85,6 +85,13 @@ configure(subprojects) {
   }
 }
 
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(8) // ou 11, conforme necessário
+  }
+}
+
+
 subprojects {
   version = '$projectVersion'
   ext.appName = 't2-Paradigmas'
@@ -104,6 +111,7 @@ subprojects {
     implementation "com.badlogicgames.gdx:gdx:1.13.0"
     implementation "com.badlogicgames.gdx:gdx-freetype:1.13.0"
     implementation "com.badlogicgames.gdx:gdx-freetype-platform:1.13.0:natives-desktop"
+    implementation 'com.google.code.gson:gson:2.11.0'
   }
 }
 

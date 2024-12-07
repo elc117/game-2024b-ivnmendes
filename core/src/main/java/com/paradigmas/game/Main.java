@@ -40,7 +40,6 @@ public class Main extends Game {
         createScreens(screenManager);
 
         screenManager.showScreen(MAIN_SCREEN);
-
     }
 
     private void createScreens(ScreenManager screenManager) {

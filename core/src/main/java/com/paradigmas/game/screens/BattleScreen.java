@@ -13,10 +13,14 @@ import com.paradigmas.game.questions.Question;
 import com.paradigmas.game.questions.Quiz;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
+import com.paradigmas.game.ui.QuizGenerator;
 import com.paradigmas.game.utils.BattleStatus;
 import com.paradigmas.game.utils.LoadAssets;
+import com.paradigmas.game.utils.ScreenType;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.HashMap;
 
 import static com.paradigmas.game.utils.FontType.*;
 import static com.paradigmas.game.utils.ScreenType.*;
@@ -34,6 +38,8 @@ public class BattleScreen extends SuperScreen {
     private Question actualQuestion;
     private boolean isCorrect;
     private float timePassed;
+    private float timeText;
+    private int currentCharIndex;
 
     public BattleScreen(Main game, String backgroundTexturePath, String backgroundMusicPath, Quiz quiz, Enemy enemy, Paradigmer paradigmer) {
         super(game, backgroundTexturePath, backgroundMusicPath);
@@ -43,35 +49,10 @@ public class BattleScreen extends SuperScreen {
         this.quiz = quiz;
         this.enemy = enemy;
         this.paradigmer = paradigmer;
+        currentCharIndex = 0;
 
         status = WAITING_ANSWER;
         actualQuestion = quiz.getQuestion();
-
-        float buttonDistanceY = 0;
-        int cont = 0;
-        for (int i = 0; i < 2; i++) {
-            float buttonDistanceX = 0;
-
-            for (int j = 0; j < 2; j++) {
-                int option = cont + 1;
-                ButtonAction action = () -> questionAnswered(option);
-
-                Button button = new Button(
-                    super.game,
-                    actualQuestion.getAnswer(cont),
-                    super.worldWidth - 7f + buttonDistanceX,
-                    1.7f - buttonDistanceY,
-                    3f,
-                    1f,
-                    action
-                );
-
-                super.addButton(button);
-                buttonDistanceX += 3.7f;
-                cont++;
-            }
-            buttonDistanceY += 1.5f;
-        }
 
         String text = "Pause";
         ButtonAction action = () -> super.game.getScreenManager().showScreen(PAUSE_SCREEN);
@@ -86,6 +67,8 @@ public class BattleScreen extends SuperScreen {
         );
 
         super.addButton(button);
+
+        initializeButtons();
     }
 
     @Override
@@ -158,52 +141,77 @@ public class BattleScreen extends SuperScreen {
                 String.format("Resposta correta! %d acertos consecutivos!", paradigmer.getConsecutiveHits())
                 :
                 "Resposta errada!";
-
-        drawTextMultiline(textToDraw, 7.5f);
+        textToDraw = breakText(textToDraw, delta);
+        float x = 0.5f;
+        float y = 2f;
+        int alignment = Align.left;
+        super.game.getFontHashMap().get(TEXT_QUESTION).draw(
+            super.game.getBatch(),
+            textToDraw,
+            x,
+            y,
+            7.5f,
+            alignment,
+            true
+        );
 
         super.game.getBatch().end();
 
-        if (status == WAITING_ANSWER) {
-            super.stage.act(
-                Math.min(
-                    Gdx.graphics.getDeltaTime(), 1 / 30f
-                )
-            );
-            super.stage.draw();
-        }
+        super.stage.act(
+            Math.min(
+                Gdx.graphics.getDeltaTime(), 1 / 30f
+            )
+        );
+        super.stage.draw();
     }
 
     @Override
     public void logic(float delta) {
-        float deltaTime = Gdx.graphics.getDeltaTime();
-
         switch (status) {
             case ANSWERED:
+                currentCharIndex = 0;
+                super.removeButtons(1); //Remove todos os botões de responder questão
                 if (isCorrect) {
                     paradigmer.hit();
                     enemy.causeDamage(paradigmer.getConsecutiveHits());
                 } else {
+                    paradigmer.miss();
                     paradigmer.causeDamage();
                 }
 
-                timePassed += deltaTime;
+                timePassed += delta;
 
                 status = WAITING_NEXT_QUESTION;
                 break;
             case WAITING_NEXT_QUESTION:
-                timePassed += deltaTime;
+                timePassed += delta;
 
-                if (timePassed >= 5f) {
+                if (timePassed >= 3f || Gdx.input.isTouched()) {
                     actualQuestion = quiz.getQuestion();
+                    initializeButtons();
+                    currentCharIndex = 0;
                     status = WAITING_ANSWER;
                 }
                 break;
         }
 
         if (paradigmer.getLife() == 0) {
-            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa");
-            super.game.getScreenManager().showScreen(MAIN_SCREEN);
+            setEndGameScreen(true);
+        } else if (enemy.getLife() == 0) {
+            setEndGameScreen(false);
         }
+    }
+
+    private void setEndGameScreen(boolean result) {
+        ScreenManager screenManager = super.game.getScreenManager();
+        HashMap<ScreenType, SuperScreen> screens = screenManager.getScreens();
+        screens.remove(END_SCREEN);
+
+        String backgroundTexturePath = "images/battleBackground.jpg";
+        String backgroundMusicPath = "sounds/backgroundMusic.mp3";
+       EndGameScreen endGameScreen = new EndGameScreen(super.game, backgroundTexturePath, backgroundMusicPath, result);
+        screens.put(END_SCREEN, endGameScreen);
+        screenManager.showScreen(END_SCREEN);
     }
 
     @Override
@@ -233,24 +241,51 @@ public class BattleScreen extends SuperScreen {
         uiLifeBarSprite.getTexture().dispose();
     }
 
-    private void drawTextMultiline(String text, float targetWidth) {
-        float x = 0.5f;
-        float y = 2f;
-        int alignment = Align.left;
-        super.game.getFontHashMap().get(TEXT_QUESTION).draw(
-            super.game.getBatch(),
-            text,
-            x,
-            y,
-            targetWidth,
-            alignment,
-            true
-        );
+    private String breakText(String text, float delta) {
+        timeText += delta;
+
+        float timePerChar = 0.03f;
+        if (timeText >= timePerChar) {
+            timeText = 0f;
+            if (currentCharIndex < text.length()) {
+                currentCharIndex++;
+            }
+        }
+
+        return text.substring(0, currentCharIndex);
     }
 
     private void questionAnswered(int option) {
         isCorrect = actualQuestion.answerQuestion(option);
         status = ANSWERED;
         timePassed = 0f;
+    }
+
+    private void initializeButtons() {
+        float buttonDistanceY = 0;
+        int cont = 0;
+        for (int i = 0; i < 2; i++) {
+            float buttonDistanceX = 0;
+
+            for (int j = 0; j < 2; j++) {
+                int option = cont + 1;
+                ButtonAction action = () -> questionAnswered(option);
+
+                Button button = new Button(
+                    super.game,
+                    actualQuestion.getAnswer(cont),
+                    super.worldWidth - 7f + buttonDistanceX,
+                    1.7f - buttonDistanceY,
+                    3f,
+                    1f,
+                    action
+                );
+
+                super.addButton(button);
+                buttonDistanceX += 3.7f;
+                cont++;
+            }
+            buttonDistanceY += 1.5f;
+        }
     }
 }

@@ -5,5 +5,6 @@ public enum ScreenType {
     SELECT_SCREEN,
     ABOUT_SCREEN,
     BATTLE_SCREEN,
-    PAUSE_SCREEN
+    PAUSE_SCREEN,
+    END_SCREEN
 }
