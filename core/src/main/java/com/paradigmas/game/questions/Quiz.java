@@ -1,11 +1,9 @@
 package com.paradigmas.game.questions;
 
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-@Getter
 public class Quiz {
     private final ArrayList<Question> questions;
 
@@ -25,5 +23,9 @@ public class Quiz {
         questions.remove(index);
 
         return question;
+    }
+
+    public ArrayList<Question> getQuestions() {
+        return questions;
     }
 }

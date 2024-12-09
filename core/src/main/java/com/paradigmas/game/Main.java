@@ -13,13 +13,11 @@ import com.paradigmas.game.utils.LoadAssets;
 import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.paradigmas.game.utils.ScreenType.*;
-import lombok.Getter;
 
 import java.util.HashMap;
 
 import static com.paradigmas.game.utils.FontType.*;
 
-@Getter
 public class Main extends Game {
     private SpriteBatch batch;
     private FitViewport viewport;
@@ -104,5 +102,21 @@ public class Main extends Game {
         fontHashMap.forEach((key, value) -> {
             value.dispose();
         });
+    }
+
+    public SpriteBatch getBatch() {
+        return batch;
+    }
+
+    public FitViewport getViewport() {
+        return viewport;
+    }
+
+    public HashMap<FontType, BitmapFont> getFontHashMap() {
+        return fontHashMap;
+    }
+
+    public ScreenManager getScreenManager() {
+        return screenManager;
     }
 }

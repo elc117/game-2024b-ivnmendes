@@ -26,7 +26,6 @@ import static com.paradigmas.game.utils.FontType.*;
 import static com.paradigmas.game.utils.ScreenType.*;
 import static com.paradigmas.game.utils.BattleStatus.*;
 
-@Getter
 public class BattleScreen extends SuperScreen {
     private final Quiz quiz;
     private final Enemy enemy;
@@ -287,5 +286,53 @@ public class BattleScreen extends SuperScreen {
             }
             buttonDistanceY += 1.5f;
         }
+    }
+
+    public Quiz getQuiz() {
+        return quiz;
+    }
+
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    public Paradigmer getParadigmer() {
+        return paradigmer;
+    }
+
+    public Sprite getUiTextSprite() {
+        return uiTextSprite;
+    }
+
+    public Sprite getUiLifeBarSprite() {
+        return uiLifeBarSprite;
+    }
+
+    public Sprite getUiQuestionSprite() {
+        return uiQuestionSprite;
+    }
+
+    public BattleStatus getStatus() {
+        return status;
+    }
+
+    public Question getActualQuestion() {
+        return actualQuestion;
+    }
+
+    public boolean isCorrect() {
+        return isCorrect;
+    }
+
+    public float getTimePassed() {
+        return timePassed;
+    }
+
+    public float getTimeText() {
+        return timeText;
+    }
+
+    public int getCurrentCharIndex() {
+        return currentCharIndex;
     }
 }

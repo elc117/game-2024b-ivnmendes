@@ -8,12 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.paradigmas.game.Main;
 import com.paradigmas.game.utils.LoadAssets;
-import lombok.Getter;
 
 import static com.paradigmas.game.utils.FontType.*;
 
 public class Button {
-    @Getter private final TextButton button;
+    private final TextButton button;
     private final Skin skin;
     private final TextureAtlas buttonAtlas;
 
@@ -44,5 +43,9 @@ public class Button {
     public void dispose() {
         skin.dispose();
         buttonAtlas.dispose();
+    }
+
+    public TextButton getButton() {
+        return button;
     }
 }

@@ -4,9 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 import com.paradigmas.game.utils.LoadAssets;
 
-import lombok.Getter;
-
-@Getter
 public abstract class Character {
     protected int life;
     protected String name;
@@ -21,4 +18,15 @@ public abstract class Character {
 
     public abstract void causeDamage(int consecutiveHits);
 
+    public int getLife() {
+        return life;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Sprite getSprite() {
+        return sprite;
+    }
 }

@@ -10,12 +10,9 @@ import com.badlogic.gdx.utils.Array;
 import com.paradigmas.game.Main;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.utils.LoadAssets;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 
-@Getter
 public abstract class SuperScreen implements Screen {
     protected final Main game;
     protected Texture backgroundTexture;
@@ -23,8 +20,8 @@ public abstract class SuperScreen implements Screen {
     protected ArrayList<Button> buttons;
     protected Stage stage;
 
-    @Setter protected float worldWidth;
-    @Setter protected float worldHeight;
+    protected float worldWidth;
+    protected float worldHeight;
 
     public SuperScreen(final Main game, String backgroundTexturePath, String backgroundMusicPath) {
         worldWidth = game.getViewport().getWorldWidth();
@@ -85,5 +82,40 @@ public abstract class SuperScreen implements Screen {
         }
     }
 
+    public Main getGame() {
+        return game;
+    }
+
+    public Texture getBackgroundTexture() {
+        return backgroundTexture;
+    }
+
+    public Music getBackgroundMusic() {
+        return backgroundMusic;
+    }
+
+    public ArrayList<Button> getButtons() {
+        return buttons;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public float getWorldWidth() {
+        return worldWidth;
+    }
+
+    public float getWorldHeight() {
+        return worldHeight;
+    }
+
+    public void setWorldHeight(float worldHeight) {
+        this.worldHeight = worldHeight;
+    }
+
+    public void setWorldWidth(float worldWidth) {
+        this.worldWidth = worldWidth;
+    }
 }
 
