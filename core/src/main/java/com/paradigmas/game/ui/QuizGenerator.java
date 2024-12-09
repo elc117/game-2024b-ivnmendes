@@ -14,19 +14,19 @@ public abstract class QuizGenerator {
                 quiz.addQuestion(new Question("ababcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacad1", new String[]{"abra", "bola", "cachorro", "dromedario"}, 1));
                 quiz.addQuestion(new Question("abcabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfd3", new String[]{"abra", "bola", "cachorro", "dromedario"}, 3));
                 quiz.addQuestion(new Question("ababcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacgfd2", new String[]{"abra", "bola", "cachorro", "dromedario"}, 2));
-                quiz.addQuestion(new Question("abcrabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaewd0", new String[]{"abra", "bola", "cachorro", "dromedario"}, 0));
+                quiz.addQuestion(new Question("abcrabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaewd0", new String[]{"abra", "bola", "cachorro", "dromedario"}, 4));
                 quiz.addQuestion(new Question("abcdgabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafds2", new String[]{"abra", "bola", "cachorro", "dromedario"}, 2));
                 quiz.addQuestion(new Question("abcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new String[]{"abra", "bola", "cachorro", "dromedario"}, 2));
                 quiz.addQuestion(new Question("ababcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacad1", new String[]{"abra", "bola", "cachorro", "dromedario"}, 1));
                 quiz.addQuestion(new Question("abcabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfd3", new String[]{"abra", "bola", "cachorro", "dromedario"}, 3));
                 quiz.addQuestion(new Question("ababcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacgfd2", new String[]{"abra", "bola", "cachorro", "dromedario"}, 2));
-                quiz.addQuestion(new Question("abcrabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaewd0", new String[]{"abra", "bola", "cachorro", "dromedario"}, 0));
+                quiz.addQuestion(new Question("abcrabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaewd4", new String[]{"abra", "bola", "cachorro", "dromedario"}, 4));
                 quiz.addQuestion(new Question("abcdgabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafds2", new String[]{"abra", "bola", "cachorro", "dromedario"}, 2));
                 quiz.addQuestion(new Question("abcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new String[]{"abra", "bola", "cachorro", "dromedario"}, 2));
                 quiz.addQuestion(new Question("ababcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacad1", new String[]{"abra", "bola", "cachorro", "dromedario"}, 1));
                 quiz.addQuestion(new Question("abcabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfd3", new String[]{"abra", "bola", "cachorro", "dromedario"}, 3));
                 quiz.addQuestion(new Question("ababcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacgfd2", new String[]{"abra", "bola", "cachorro", "dromedario"}, 2));
-                quiz.addQuestion(new Question("abcrabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaewd0", new String[]{"abra", "bola", "cachorro", "dromedario"}, 0));
+                quiz.addQuestion(new Question("abcrabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaewd4", new String[]{"abra", "bola", "cachorro", "dromedario"}, 4));
                 quiz.addQuestion(new Question("abcdgabcd2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafds2", new String[]{"abra", "bola", "cachorro", "dromedario"}, 2));
                 break;
             case 1:

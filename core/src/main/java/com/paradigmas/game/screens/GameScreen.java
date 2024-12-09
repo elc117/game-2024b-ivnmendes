@@ -25,7 +25,7 @@ public class GameScreen extends SuperScreen {
         String battleBackgroundPath = "images/battleBackground.jpg";
         float buttonDistance = 0;
         for (int i = 1; i < 4; i++) {
-            String title = String.format("Fase %d", i);
+            String title = "Fase " + i;
             int option = i - 1;
             ButtonAction action = () -> setBattleScreen(battleBackgroundPath, backgroundMusicPath, option);
             Button button = new Button(
@@ -83,6 +83,7 @@ public class GameScreen extends SuperScreen {
         float textWidth = layout.width;
         float textHeight = layout.height;
         float x = (worldWidth - textWidth) / 2 + 2;
+        System.out.println(x);
         float y = (worldHeight + textHeight) / 2 + 3.5f;
         float targetWidth = super.worldWidth;
         int alignment = Align.left;

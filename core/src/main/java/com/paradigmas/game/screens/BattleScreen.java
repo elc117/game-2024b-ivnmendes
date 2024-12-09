@@ -119,9 +119,10 @@ public class BattleScreen extends SuperScreen {
             super.worldWidth - 4.1f,
             4.4f
         );
+        String playLifeString = paradigmer.getLife() + "/100";
         super.game.getFontHashMap().get(TEXT_BATTLE).draw(
             super.game.getBatch(),
-            String.format("%d/100",paradigmer.getLife()),
+            playLifeString,
             super.worldWidth - 2.5f,
             3.57f
         );
@@ -133,11 +134,12 @@ public class BattleScreen extends SuperScreen {
         }
 
         //talvez tenha ficado meio confuso
+        String correctAnswer = "Resposta correta! " + paradigmer.getConsecutiveHits() + " acertos consecutivos!";
         String textToDraw = (status == WAITING_ANSWER) ?
             actualQuestion.getQuestion()
             :
             (isCorrect) ?
-                String.format("Resposta correta! %d acertos consecutivos!", paradigmer.getConsecutiveHits())
+                correctAnswer
                 :
                 "Resposta errada!";
         textToDraw = breakText(textToDraw, delta);
@@ -195,9 +197,9 @@ public class BattleScreen extends SuperScreen {
         }
 
         if (paradigmer.getLife() == 0) {
-            setEndGameScreen(true);
-        } else if (enemy.getLife() == 0) {
             setEndGameScreen(false);
+        } else if (enemy.getLife() == 0) {
+            setEndGameScreen(true);
         }
     }
 
@@ -208,7 +210,7 @@ public class BattleScreen extends SuperScreen {
 
         String backgroundTexturePath = "images/battleBackground.jpg";
         String backgroundMusicPath = "sounds/backgroundMusic.mp3";
-       EndGameScreen endGameScreen = new EndGameScreen(super.game, backgroundTexturePath, backgroundMusicPath, result);
+        EndGameScreen endGameScreen = new EndGameScreen(super.game, backgroundTexturePath, backgroundMusicPath, result);
         screens.put(END_SCREEN, endGameScreen);
         screenManager.showScreen(END_SCREEN);
     }

@@ -1,8 +1,5 @@
 package com.paradigmas.game.entities;
 
-import lombok.Getter;
-
-@Getter
 public class Paradigmer extends Character {
     private int consecutiveHits;
     public Paradigmer(String name, String spritePath) {
@@ -33,4 +30,9 @@ public class Paradigmer extends Character {
     public void miss() {
         consecutiveHits = 0;
     }
+
+    public int getConsecutiveHits() {
+        return consecutiveHits;
+    }
+
 }
