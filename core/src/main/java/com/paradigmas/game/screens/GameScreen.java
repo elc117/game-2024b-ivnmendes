@@ -6,8 +6,11 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.paradigmas.game.Main;
+import com.paradigmas.game.entities.Enemy;
+import com.paradigmas.game.entities.Paradigmer;
 import com.paradigmas.game.ui.ButtonAction;
 import com.paradigmas.game.ui.Button;
+import com.paradigmas.game.ui.QuizGenerator;
 import com.paradigmas.game.utils.ScreenType;
 
 import java.util.HashMap;
@@ -22,8 +25,9 @@ public class GameScreen extends SuperScreen {
         String battleBackgroundPath = "images/battleBackground.jpg";
         float buttonDistance = 0;
         for (int i = 1; i < 4; i++) {
-            String title = String.format("Fase %d", i);
-            ButtonAction action = () -> setBattleScreen(battleBackgroundPath, backgroundMusicPath, title);
+            String title = "Fase " + i;
+            int option = i - 1;
+            ButtonAction action = () -> setBattleScreen(battleBackgroundPath, backgroundMusicPath, option);
             Button button = new Button(
                 super.game,
                 title,
@@ -71,19 +75,7 @@ public class GameScreen extends SuperScreen {
             worldHeight
         );
 
-        drawTextMultiline("Selecione uma fase: ", super.worldWidth);
-
-        super.game.getBatch().end();
-
-        super.stage.act(
-            Math.min(
-                Gdx.graphics.getDeltaTime(), 1 / 30f
-            )
-        );
-        super.stage.draw();
-    }
-
-    private void drawTextMultiline(String text, float targetWidth) {
+        String text = "Selecione uma fase:";
         GlyphLayout layout = new GlyphLayout(
             super.game.getFontHashMap().get(TITLE),
             text
@@ -92,6 +84,7 @@ public class GameScreen extends SuperScreen {
         float textHeight = layout.height;
         float x = (worldWidth - textWidth) / 2 + 2;
         float y = (worldHeight + textHeight) / 2 + 3.5f;
+        float targetWidth = super.worldWidth;
         int alignment = Align.left;
         super.game.getFontHashMap().get(TITLE).draw(
             super.game.getBatch(),
@@ -102,6 +95,15 @@ public class GameScreen extends SuperScreen {
             alignment,
             true
         );
+
+        super.game.getBatch().end();
+
+        super.stage.act(
+            Math.min(
+                Gdx.graphics.getDeltaTime(), 1 / 30f
+            )
+        );
+        super.stage.draw();
     }
 
     @Override
@@ -133,12 +135,17 @@ public class GameScreen extends SuperScreen {
         super.dispose();
     }
 
-    private void setBattleScreen(String backgroundTexturePath, String backgroundMusicPath, String title) {
+    private void setBattleScreen(String backgroundTexturePath, String backgroundMusicPath, int option) {
         ScreenManager screenManager = super.game.getScreenManager();
         HashMap<ScreenType, SuperScreen> screens = screenManager.getScreens();
         screens.remove(BATTLE_SCREEN);
 
-        BattleScreen battleScreen = new BattleScreen(super.game, backgroundTexturePath, backgroundMusicPath, title);
+        String[] enemySpritePath = {"sprites/treecko.png", "sprites/charmander.png", "sprites/abra.png"};
+        String[] enemyName = {"treecko", "charmander", "abra"};
+
+        Enemy enemy = new Enemy(enemyName[option], enemySpritePath[option]);
+        Paradigmer paradigmer = new Paradigmer("Paradigmer", "sprites/paradigmer.png");
+        BattleScreen battleScreen = new BattleScreen(super.game, backgroundTexturePath, backgroundMusicPath, QuizGenerator.quizGenerate(option), enemy, paradigmer);
         screens.put(BATTLE_SCREEN, battleScreen);
         screenManager.showScreen(BATTLE_SCREEN);
     }

@@ -51,7 +51,6 @@ public class PauseScreen extends SuperScreen {
         GlyphLayout layout = new GlyphLayout(super.game.getFontHashMap().get(TITLE), "Pausado");
         float textWidth = layout.width;
         float textHeight = layout.height;
-
         super.game.getFontHashMap().get(TITLE).draw(
             super.game.getBatch(),
             "Pausado",

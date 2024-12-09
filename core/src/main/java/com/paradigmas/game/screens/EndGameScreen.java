@@ -1,54 +1,42 @@
 package com.paradigmas.game.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.paradigmas.game.Main;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
 
 import static com.paradigmas.game.utils.FontType.TITLE;
-import static com.paradigmas.game.utils.ScreenType.*;
+import static com.paradigmas.game.utils.ScreenType.MAIN_SCREEN;
 
-public class MainMenuScreen extends SuperScreen {
-    public MainMenuScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
+public class EndGameScreen extends SuperScreen {
+    private final boolean result;
+    public EndGameScreen(Main game, String backgroundTexturePath, String backgroundMusicPath, boolean result) {
         super(game, backgroundTexturePath, backgroundMusicPath);
 
-        String[] textButtons = {"Jogar", "Sobre", "Sair"};
-        ButtonAction[] action = {
-            () -> super.game.getScreenManager().showScreen(SELECT_SCREEN),
-            () -> super.game.getScreenManager().showScreen(ABOUT_SCREEN),
-            () -> Gdx.app.exit()
-        };
+        this.result = result;
 
-        float buttonDistance = 0;
-        for (int i = 0; i < 3; i++) {
-            Button button = new Button(
-                super.game,
-                textButtons[i],
-                super.worldWidth / 2 - 1f,
-                super.worldHeight / 2 + buttonDistance,
-                2f,
-                1f,
-                action[i]
-            );
-            super.addButton(button);
-            buttonDistance -= 1.5f;
-        }
+        String text = "menu";
+        ButtonAction action = () -> super.game.getScreenManager().showScreen(MAIN_SCREEN);
+        Button button = new Button(
+            super.game,
+            text,
+            super.getWorldWidth() / 2 - 1.2f,
+            super.getWorldHeight() / 2 - 3f,
+            2f,
+            1f,
+            action
+        );
 
+        super.addButton(button);
     }
 
-    @Override
-    public void show() {
-        super.backgroundMusic.play();
-        Gdx.input.setInputProcessor(super.stage);
-    }
-
-    @Override
     public void draw(float delta) {
         ScreenUtils.clear(Color.WHITE);
-
         super.game.getViewport().apply();
         super.game.getBatch().setProjectionMatrix(
             super.game.getViewport().getCamera().combined
@@ -64,19 +52,26 @@ public class MainMenuScreen extends SuperScreen {
             worldHeight
         );
 
-        String title = "Hello World";
+        String resultText = (result) ? "Parabens, voce venceu!" : "Voce perdeu, mais sorte da proxima vez";
+        float xOffset = (result) ? 4 : 12;
         GlyphLayout layout = new GlyphLayout(
             super.game.getFontHashMap().get(TITLE),
-            title
+            resultText
         );
         float textWidth = layout.width;
         float textHeight = layout.height;
-
+        float x = (worldWidth - textWidth) / 2 + xOffset;
+        float y = (worldHeight + textHeight) / 2 + 3.5f;
+        float targetWidth = 12.5f;
+        int alignment = Align.center;
         super.game.getFontHashMap().get(TITLE).draw(
             super.game.getBatch(),
-            title,
-            (worldWidth - textWidth) / 2,
-            (worldHeight + textHeight) / 2 + 2f
+            resultText,
+            x,
+            y,
+            targetWidth,
+            alignment,
+            true
         );
 
         super.game.getBatch().end();
@@ -95,6 +90,11 @@ public class MainMenuScreen extends SuperScreen {
     }
 
     @Override
+    public void show() {
+        Gdx.input.setInputProcessor(super.stage);
+    }
+
+    @Override
     public void pause() {
 
     }
@@ -107,10 +107,5 @@ public class MainMenuScreen extends SuperScreen {
     @Override
     public void hide() {
 
-    }
-
-    @Override
-    public void dispose() {
-        super.dispose();
     }
 }

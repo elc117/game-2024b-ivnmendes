@@ -2,11 +2,9 @@ package com.paradigmas.game.screens;
 
 import com.paradigmas.game.Main;
 import com.paradigmas.game.utils.ScreenType;
-import lombok.Getter;
 
 import java.util.HashMap;
 
-@Getter
 public class ScreenManager {
     private final Main game;
     private final HashMap<ScreenType, SuperScreen> screens;
@@ -27,5 +25,13 @@ public class ScreenManager {
     public void showScreen(ScreenType screenToShow) {
         SuperScreen screen = screens.get(screenToShow);
         game.setScreen(screen);
+    }
+
+    public Main getGame() {
+        return game;
+    }
+
+    public HashMap<ScreenType, SuperScreen> getScreens() {
+        return screens;
     }
 }

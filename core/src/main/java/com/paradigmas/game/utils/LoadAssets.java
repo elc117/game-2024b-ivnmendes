@@ -4,12 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.graphics.Color;
-
-import java.awt.*;
 
 public abstract class LoadAssets {
     public static Texture loadTexture(String path) {
@@ -47,12 +46,12 @@ public abstract class LoadAssets {
         }
     }
 
-    public static BitmapFont loadFont(String path, int fontSize){
+    public static BitmapFont loadFont(String path, int fontSize, Color color){
         try {
             FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(path));
             FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
-            // Defina o tamanho da fonte
+            parameter.color = color;
             parameter.size = fontSize;
 
             BitmapFont font = generator.generateFont(parameter);
@@ -61,6 +60,17 @@ public abstract class LoadAssets {
             return font;
         } catch (Exception e) {
             throw new RuntimeException("Erro ao carregar fonte: " + path, e);
+        }
+    }
+
+    public static Sprite loadSprite(String path, float sizeW, float sizeH) {
+        try {
+            Texture spriteTexture = new Texture(path);
+            Sprite sprite = new Sprite(spriteTexture);
+            sprite.setSize(sizeW, sizeH);
+            return sprite;
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao carregar sprite: " + path, e);
         }
     }
 }
