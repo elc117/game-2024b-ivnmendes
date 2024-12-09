@@ -1,0 +1,224 @@
+{
+  "questions": [
+    {
+      "question": "What is the capital of France?",
+      "answers": ["Paris", "London", "Berlin", "Rome"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "Which planet is known as the Red Planet?",
+      "answers": ["Earth", "Mars", "Jupiter", "Venus"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Who wrote 'Romeo and Juliet'?",
+      "answers": ["William Shakespeare", "Charles Dickens", "Mark Twain", "Jane Austen"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is 5 + 7?",
+      "answers": ["10", "11", "12", "13"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "What is the chemical symbol for water?",
+      "answers": ["O2", "H2O", "CO2", "NaCl"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Which year did the Titanic sink?",
+      "answers": ["1910", "1912", "1914", "1916"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Who painted the Mona Lisa?",
+      "answers": ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Claude Monet"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "Which animal is known as the King of the Jungle?",
+      "answers": ["Tiger", "Lion", "Elephant", "Leopard"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "How many continents are there?",
+      "answers": ["5", "6", "7", "8"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "What is the largest mammal?",
+      "answers": ["Elephant", "Blue Whale", "Giraffe", "Orca"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Which gas do plants use for photosynthesis?",
+      "answers": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "What is the square root of 64?",
+      "answers": ["6", "7", "8", "9"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Which ocean is the largest?",
+      "answers": ["Atlantic", "Indian", "Pacific", "Arctic"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "What is the boiling point of water?",
+      "answers": ["50°C", "75°C", "100°C", "125°C"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Which country is known as the Land of the Rising Sun?",
+      "answers": ["China", "Japan", "Thailand", "India"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "What is the longest river in the world?",
+      "answers": ["Amazon", "Nile", "Yangtze", "Mississippi"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "What is the smallest prime number?",
+      "answers": ["0", "1", "2", "3"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Which element has the atomic number 1?",
+      "answers": ["Hydrogen", "Helium", "Lithium", "Carbon"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is the capital of Italy?",
+      "answers": ["Venice", "Rome", "Milan", "Naples"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Which planet has the most moons?",
+      "answers": ["Earth", "Mars", "Jupiter", "Saturn"],
+      "correctAnswer": 3
+    },
+    {
+      "question": "What is the main ingredient in bread?",
+      "answers": ["Salt", "Sugar", "Flour", "Yeast"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "How many legs does a spider have?",
+      "answers": ["6", "8", "10", "12"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "What is the capital of Australia?",
+      "answers": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Who discovered gravity?",
+      "answers": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "What is the speed of light?",
+      "answers": ["300,000 km/s", "150,000 km/s", "100,000 km/s", "200,000 km/s"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is the chemical symbol for gold?",
+      "answers": ["Ag", "Au", "Pb", "Fe"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Which country hosted the 2016 Olympics?",
+      "answers": ["China", "Brazil", "Russia", "UK"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "What is the largest desert in the world?",
+      "answers": ["Sahara", "Gobi", "Kalahari", "Arctic"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is the capital of Germany?",
+      "answers": ["Berlin", "Munich", "Frankfurt", "Hamburg"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "Which metal is liquid at room temperature?",
+      "answers": ["Mercury", "Gold", "Iron", "Silver"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is the largest planet in our solar system?",
+      "answers": ["Earth", "Mars", "Jupiter", "Saturn"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "What is the national sport of Japan?",
+      "answers": ["Baseball", "Sumo", "Karate", "Judo"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "What is the capital of Canada?",
+      "answers": ["Toronto", "Ottawa", "Vancouver", "Montreal"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Who invented the telephone?",
+      "answers": ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Guglielmo Marconi"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is the smallest bone in the human body?",
+      "answers": ["Femur", "Stapes", "Clavicle", "Phalanges"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "What is the chemical formula for table salt?",
+      "answers": ["NaCl", "KCl", "CaCl2", "MgCl2"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is the hardest natural substance on Earth?",
+      "answers": ["Gold", "Iron", "Diamond", "Quartz"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Which country is known for its tulips?",
+      "answers": ["Netherlands", "Belgium", "Germany", "France"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What is the main ingredient in sushi?",
+      "answers": ["Bread", "Rice", "Noodles", "Fish"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "How many teeth does an adult human have?",
+      "answers": ["28", "30", "32", "34"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "What is the currency of Japan?",
+      "answers": ["Yuan", "Won", "Yen", "Dollar"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "What is the tallest mountain in the world?",
+      "answers": ["Mount Everest", "K2", "Kangchenjunga", "Lhotse"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "Which country is the largest by area?",
+      "answers": ["USA", "China", "Russia", "Canada"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Who developed the theory of relativity?",
+      "answers": ["Newton", "Einstein", "Hawking", "Tesla"],
+      "correctAnswer": 1
+    }
+  ]
+}

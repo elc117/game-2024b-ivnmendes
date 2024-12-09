@@ -2,7 +2,6 @@ package com.paradigmas.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -13,12 +12,9 @@ import com.paradigmas.game.questions.Question;
 import com.paradigmas.game.questions.Quiz;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
-import com.paradigmas.game.ui.QuizGenerator;
 import com.paradigmas.game.utils.BattleStatus;
 import com.paradigmas.game.utils.LoadAssets;
 import com.paradigmas.game.utils.ScreenType;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.HashMap;
 
@@ -317,7 +313,7 @@ public class BattleScreen extends SuperScreen {
 
             for (int j = 0; j < 2; j++) {
                 int option = cont + 1;
-                ButtonAction action = () -> questionAnswered(option);
+                ButtonAction action = () -> questionAnswered(option - 1);
 
                 Button button = new Button(
                     super.game,
