@@ -83,7 +83,6 @@ public class GameScreen extends SuperScreen {
         float textWidth = layout.width;
         float textHeight = layout.height;
         float x = (worldWidth - textWidth) / 2 + 2;
-        System.out.println(x);
         float y = (worldHeight + textHeight) / 2 + 3.5f;
         float targetWidth = super.worldWidth;
         int alignment = Align.left;

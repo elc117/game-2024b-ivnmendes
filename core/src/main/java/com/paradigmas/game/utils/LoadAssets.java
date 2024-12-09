@@ -63,7 +63,7 @@ public abstract class LoadAssets {
         }
     }
 
-    public static Sprite loadSprite(String path, int sizeW, int sizeH) {
+    public static Sprite loadSprite(String path, float sizeW, float sizeH) {
         try {
             Texture spriteTexture = new Texture(path);
             Sprite sprite = new Sprite(spriteTexture);

@@ -111,7 +111,7 @@ subprojects {
     implementation "com.badlogicgames.gdx:gdx:1.9.10"
     implementation "com.badlogicgames.gdx:gdx-freetype:1.9.10"
     implementation "com.badlogicgames.gdx:gdx-freetype-platform:1.9.10:natives-desktop"
-  //  implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'com.google.code.gson:gson:2.11.0'
   }
 }
 
