@@ -16,8 +16,6 @@ import static com.paradigmas.game.utils.ScreenType.*;
 
 import java.util.HashMap;
 
-import static com.paradigmas.game.utils.FontType.*;
-
 public class Main extends Game {
     private SpriteBatch batch;
     private FitViewport viewport;
@@ -45,7 +43,7 @@ public class Main extends Game {
             MAIN_SCREEN,
             new MainMenuScreen(
                 this,
-                "images/background.jpg",
+                "backgrounds/backgroundMenu.png",
                 "sounds/backgroundMusic.mp3"
             )
         );
@@ -54,7 +52,7 @@ public class Main extends Game {
             SELECT_SCREEN,
             new GameScreen(
                 this,
-                "images/background.jpg",
+                "backgrounds/backgroundMenu.png",
                 "sounds/backgroundMusic.mp3"
             )
         );
@@ -63,7 +61,7 @@ public class Main extends Game {
             ABOUT_SCREEN,
             new AboutScreen(
                 this,
-                "images/background.jpg",
+                "backgrounds/backgroundMenu.png",
                 "sounds/backgroundMusic.mp3"
             )
         );
@@ -82,7 +80,7 @@ public class Main extends Game {
         String path = "font/font.TTF";
         FontType[] fontTypes = FontType.values();
         Color[] colorTypes = {BLACK, WHITE, WHITE, WHITE};
-        int[] sizes = {30, 40, 100, 20};
+        int[] sizes = {30, 25, 100, 20};
 
         for (int i = 0; i < 4; i++) {
             fontHashMap.put(fontTypes[i], LoadAssets.loadFont(path, sizes[i], colorTypes[i]));

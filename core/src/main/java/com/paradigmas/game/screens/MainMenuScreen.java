@@ -3,6 +3,7 @@ package com.paradigmas.game.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.paradigmas.game.Main;
 import com.paradigmas.game.ui.Button;
@@ -46,7 +47,7 @@ public class MainMenuScreen extends SuperScreen {
 
     @Override
     public void draw(float delta) {
-        ScreenUtils.clear(Color.WHITE);
+        ScreenUtils.clear(Color.BLACK);
 
         super.game.getViewport().apply();
         super.game.getBatch().setProjectionMatrix(
@@ -63,19 +64,25 @@ public class MainMenuScreen extends SuperScreen {
             worldHeight
         );
 
-        String title = "Hello World";
+        String text = "Paradigmer's Adventure";
         GlyphLayout layout = new GlyphLayout(
             super.game.getFontHashMap().get(TITLE),
-            title
+            text
         );
         float textWidth = layout.width;
         float textHeight = layout.height;
-
+        float x = (worldWidth - textWidth) / 2 + 2.7f;
+        float y = (worldHeight + textHeight) / 2 + 3f;
+        float targetWidth = super.worldWidth;
+        int alignment = Align.center;
         super.game.getFontHashMap().get(TITLE).draw(
             super.game.getBatch(),
-            title,
-            (worldWidth - textWidth) / 2,
-            (worldHeight + textHeight) / 2 + 2f
+            text,
+            x,
+            y,
+            targetWidth,
+            alignment,
+            true
         );
 
         super.game.getBatch().end();

@@ -1,223 +1,113 @@
 {
   "questions": [
     {
-      "question": "What is the capital of France?",
-      "options": ["Paris", "London", "Berlin", "Rome"],
+      "question": "O Geoparque Quarta Colonia esta localizado em qual estado do Brasil?",
+      "options": [
+        "Parana",
+        "Santa Catarina",
+        "Rio Grande do Sul",
+        "Mato Grosso do Sul"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Quantos municipios integram o territorio do Geoparque Quarta Colonia?",
+      "options": [
+        "5",
+        "7",
+        "9",
+        "12"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Qual e a principal tematica geologica destacada pelo Geoparque Quarta Colonia?",
+      "options": [
+        "Formacao de cavernas",
+        "Fosseis do periodo Triassico",
+        "Vulcanismo recente",
+        "Rochas metamorficas"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "question": "O Geoparque Quarta Colonia e reconhecido oficialmente pela UNESCO?",
+      "options": [
+        "Sim",
+        "Ainda nao, mas esta em processo de candidatura",
+        "Nao, e nao ha planos para reconhecimento",
+        "Sim, desde 1999"
+      ],
       "correctAnswer": 0
     },
     {
-      "question": "Which planet is known as the Red Planet?",
-      "options": ["Earth", "Mars", "Jupiter", "Venus"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Who wrote 'Romeo and Juliet'?",
-      "options": ["William Shakespeare", "Charles Dickens", "Mark Twain", "Jane Austen"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is 5 + 7?",
-      "options": ["10", "11", "12", "13"],
+      "question": "Qual e a instituicao de ensino que atua como parceira na gestao cientifica do Geoparque?",
+      "options": [
+        "Universidade Federal de Santa Catarina",
+        "Universidade de Passo Fundo",
+        "Universidade Federal de Santa Maria (UFSM)",
+        "Universidade Estadual do Rio Grande do Sul"
+      ],
       "correctAnswer": 2
     },
     {
-      "question": "What is the chemical symbol for water?",
-      "options": ["O2", "H2O", "CO2", "NaCl"],
+      "question": "Os fosseis encontrados no Geoparque Quarta Colonia sao de que era geologica?",
+      "options": [
+        "Paleozoica",
+        "Triássico Inferior-Cretáceo Inferior",
+        "Cenozoica",
+        "Pre-Cambriana"
+      ],
       "correctAnswer": 1
     },
     {
-      "question": "Which year did the Titanic sink?",
-      "options": ["1910", "1912", "1914", "1916"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Who painted the Mona Lisa?",
-      "options": ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Claude Monet"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "Which animal is known as the King of the Jungle?",
-      "options": ["Tiger", "Lion", "Elephant", "Leopard"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "How many continents are there?",
-      "options": ["5", "6", "7", "8"],
+      "question": "Qual e um dos fosseis mais emblematicos descobertos no territorio do Geoparque?",
+      "options": [
+        "Dinossauros do periodo Jurassico",
+        "Mamiferos pre-historicos",
+        "Fosseis de dicinodontes",
+        "Arvores petrificadas"
+      ],
       "correctAnswer": 2
     },
     {
-      "question": "What is the largest mammal?",
-      "options": ["Elephant", "Blue Whale", "Giraffe", "Orca"],
+      "question": "O Geoparque Quarta Colonia promove atividades ligadas a qual area alem da preservacao geologica?",
+      "options": [
+        "Agricultura intensiva",
+        "Turismo sustentavel e educacao ambiental",
+        "Mineracao em larga escala",
+        "Urbanizacao e industrializacao"
+      ],
       "correctAnswer": 1
     },
     {
-      "question": "Which gas do plants use for photosynthesis?",
-      "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the square root of 64?",
-      "options": ["6", "7", "8", "9"],
+      "question": "Qual e um dos objetivos principais dos geoparques?",
+      "options": [
+        "Explorar recursos minerais de forma massiva",
+        "Criar museus privados de geologia",
+        "Preservar o patrimonio natural e promover o desenvolvimento sustentavel",
+        "Construir rodovias em areas protegidas"
+      ],
       "correctAnswer": 2
     },
     {
-      "question": "Which ocean is the largest?",
-      "options": ["Atlantic", "Indian", "Pacific", "Arctic"],
+      "question": "O Geoparque Quarta Colonia e conhecido por sua rica biodiversidade. Qual bioma predomina na regiao?",
+      "options": [
+        "Amazonia",
+        "Cerrado",
+        "Mata Atlantica",
+        "Caatinga"
+      ],
       "correctAnswer": 2
     },
     {
-      "question": "What is the boiling point of water?",
-      "options": ["50°C", "75°C", "100°C", "125°C"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Which country is known as the Land of the Rising Sun?",
-      "options": ["China", "Japan", "Thailand", "India"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the longest river in the world?",
-      "options": ["Amazon", "Nile", "Yangtze", "Mississippi"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the smallest prime number?",
-      "options": ["0", "1", "2", "3"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Which element has the atomic number 1?",
-      "options": ["Hydrogen", "Helium", "Lithium", "Carbon"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the capital of Italy?",
-      "options": ["Venice", "Rome", "Milan", "Naples"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Which planet has the most moons?",
-      "options": ["Earth", "Mars", "Jupiter", "Saturn"],
-      "correctAnswer": 3
-    },
-    {
-      "question": "What is the main ingredient in bread?",
-      "options": ["Salt", "Sugar", "Flour", "Yeast"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "How many legs does a spider have?",
-      "options": ["6", "8", "10", "12"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the capital of Australia?",
-      "options": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Who discovered gravity?",
-      "options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the speed of light?",
-      "options": ["300,000 km/s", "150,000 km/s", "100,000 km/s", "200,000 km/s"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the chemical symbol for gold?",
-      "options": ["Ag", "Au", "Pb", "Fe"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Which country hosted the 2016 Olympics?",
-      "options": ["China", "Brazil", "Russia", "UK"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the largest desert in the world?",
-      "options": ["Sahara", "Gobi", "Kalahari", "Arctic"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the capital of Germany?",
-      "options": ["Berlin", "Munich", "Frankfurt", "Hamburg"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "Which metal is liquid at room temperature?",
-      "options": ["Mercury", "Gold", "Iron", "Silver"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the largest planet in our solar system?",
-      "options": ["Earth", "Mars", "Jupiter", "Saturn"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the national sport of Japan?",
-      "options": ["Baseball", "Sumo", "Karate", "Judo"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the capital of Canada?",
-      "options": ["Toronto", "Ottawa", "Vancouver", "Montreal"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Who invented the telephone?",
-      "options": ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Guglielmo Marconi"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the smallest bone in the human body?",
-      "options": ["Femur", "Stapes", "Clavicle", "Phalanges"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the chemical formula for table salt?",
-      "options": ["NaCl", "KCl", "CaCl2", "MgCl2"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the hardest natural substance on Earth?",
-      "options": ["Gold", "Iron", "Diamond", "Quartz"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Which country is known for its tulips?",
-      "options": ["Netherlands", "Belgium", "Germany", "France"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the main ingredient in sushi?",
-      "options": ["Bread", "Rice", "Noodles", "Fish"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "How many teeth does an adult human have?",
-      "options": ["28", "30", "32", "34"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the currency of Japan?",
-      "options": ["Yuan", "Won", "Yen", "Dollar"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the tallest mountain in the world?",
-      "options": ["Mount Everest", "K2", "Kangchenjunga", "Lhotse"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "Which country is the largest by area?",
-      "options": ["USA", "China", "Russia", "Canada"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Who developed the theory of relativity?",
-      "options": ["Newton", "Einstein", "Hawking", "Tesla"],
+      "question": "Qual e uma das principais atividades economicas na regiao do Geoparque Quarta Colonia, em harmonia com o turismo sustentavel?",
+      "options": [
+        "Extracao de petroleo",
+        "Producao agricola familiar de pequeno porte",
+        "Industria de mineracao pesada",
+        "Comercio internacional"
+      ],
       "correctAnswer": 1
     }
   ]

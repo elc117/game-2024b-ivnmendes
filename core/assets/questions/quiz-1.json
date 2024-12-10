@@ -1,223 +1,93 @@
 {
   "questions": [
     {
-      "question": "What is the capital of France?",
-      "options": ["Paris", "London", "Berlin", "Rome"],
+      "question": "Em qual estado do Brasil esta localizado o Geoparque Cacapava?",
+      "options": ["Parana", "Rio Grande do Sul", "Santa Catarina", "Minas Gerais"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Quantos municipios fazem parte do Geoparque Cacapava?",
+      "options": ["1", "3", "5", "7"],
       "correctAnswer": 0
     },
     {
-      "question": "Which planet is known as the Red Planet?",
-      "options": ["Earth", "Mars", "Jupiter", "Venus"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Who wrote 'Romeo and Juliet'?",
-      "options": ["William Shakespeare", "Charles Dickens", "Mark Twain", "Jane Austen"],
+      "question": "O Geoparque Cacapava e conhecido por qual tipo de formacao geologica?",
+      "options": [
+        "Formacoes de arenitos e cuestas",
+        "Vulcoes ativos",
+        "Rochas igneas",
+        "Campos de dunas"
+      ],
       "correctAnswer": 0
     },
     {
-      "question": "What is 5 + 7?",
-      "options": ["10", "11", "12", "13"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the chemical symbol for water?",
-      "options": ["O2", "H2O", "CO2", "NaCl"],
+      "question": "Qual e um dos principais pontos turisticos do Geoparque Cacapava?",
+      "options": [
+        "Cachoeira do Tigre Preto",
+        "Pedra do Segredo",
+        "Vale do Catimbau",
+        "Gruta de Maquine"
+      ],
       "correctAnswer": 1
     },
     {
-      "question": "Which year did the Titanic sink?",
-      "options": ["1910", "1912", "1914", "1916"],
+      "question": "O Geoparque Cacapava promove o turismo em harmonia com qual objetivo?",
+      "options": [
+        "Industrializacao",
+        "Preservacao ambiental e desenvolvimento sustentavel",
+        "Exploracao mineral em larga escala",
+        "Construcao de usinas hidreletricas"
+      ],
       "correctAnswer": 1
     },
     {
-      "question": "Who painted the Mona Lisa?",
-      "options": ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Claude Monet"],
+      "question": "Qual bioma predomina na regiao do Geoparque Cacapava?",
+      "options": ["Pampa", "Amazonia", "Cerrado", "Caatinga"],
       "correctAnswer": 0
     },
     {
-      "question": "Which animal is known as the King of the Jungle?",
-      "options": ["Tiger", "Lion", "Elephant", "Leopard"],
+      "question": "A Pedra do Segredo, um dos simbolos do Geoparque, possui qual caracteristica marcante?",
+      "options": [
+        "Uma formacao em forma de arco",
+        "Um bloco de pedra equilibrado em outra rocha",
+        "Uma gruta subterranea",
+        "Uma cascata formada por arenitos"
+      ],
       "correctAnswer": 1
     },
     {
-      "question": "How many continents are there?",
-      "options": ["5", "6", "7", "8"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the largest mammal?",
-      "options": ["Elephant", "Blue Whale", "Giraffe", "Orca"],
+      "question": "Qual e uma das principais iniciativas do Geoparque Cacapava?",
+      "options": [
+        "Exploracao de ouro na regiao",
+        "Educacao ambiental e geoturismo",
+        "Exportacao de minerais raros",
+        "Desenvolvimento de monoculturas"
+      ],
       "correctAnswer": 1
     },
     {
-      "question": "Which gas do plants use for photosynthesis?",
-      "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the square root of 64?",
-      "options": ["6", "7", "8", "9"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Which ocean is the largest?",
-      "options": ["Atlantic", "Indian", "Pacific", "Arctic"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the boiling point of water?",
-      "options": ["50°C", "75°C", "100°C", "125°C"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Which country is known as the Land of the Rising Sun?",
-      "options": ["China", "Japan", "Thailand", "India"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the longest river in the world?",
-      "options": ["Amazon", "Nile", "Yangtze", "Mississippi"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the smallest prime number?",
-      "options": ["0", "1", "2", "3"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Which element has the atomic number 1?",
-      "options": ["Hydrogen", "Helium", "Lithium", "Carbon"],
+      "question": "Em qual periodo geologico foram formadas as rochas do Geoparque Cacapava?",
+      "options": ["Pre-Cambriano", "Paleozoico", "Mesozoico", "Cenozoico"],
       "correctAnswer": 0
     },
     {
-      "question": "What is the capital of Italy?",
-      "options": ["Venice", "Rome", "Milan", "Naples"],
+      "question": "O Geoparque Cacapava tambem e conhecido por abrigar formacoes que sao importantes para qual area?",
+      "options": [
+        "Pesquisa paleontologica",
+        "Historia do ciclo do ouro",
+        "Estudos de biodiversidade",
+        "Producao industrial de energia"
+      ],
       "correctAnswer": 1
     },
     {
-      "question": "Which planet has the most moons?",
-      "options": ["Earth", "Mars", "Jupiter", "Saturn"],
-      "correctAnswer": 3
-    },
-    {
-      "question": "What is the main ingredient in bread?",
-      "options": ["Salt", "Sugar", "Flour", "Yeast"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "How many legs does a spider have?",
-      "options": ["6", "8", "10", "12"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the capital of Australia?",
-      "options": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Who discovered gravity?",
-      "options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the speed of light?",
-      "options": ["300,000 km/s", "150,000 km/s", "100,000 km/s", "200,000 km/s"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the chemical symbol for gold?",
-      "options": ["Ag", "Au", "Pb", "Fe"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Which country hosted the 2016 Olympics?",
-      "options": ["China", "Brazil", "Russia", "UK"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the largest desert in the world?",
-      "options": ["Sahara", "Gobi", "Kalahari", "Arctic"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the capital of Germany?",
-      "options": ["Berlin", "Munich", "Frankfurt", "Hamburg"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "Which metal is liquid at room temperature?",
-      "options": ["Mercury", "Gold", "Iron", "Silver"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the largest planet in our solar system?",
-      "options": ["Earth", "Mars", "Jupiter", "Saturn"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the national sport of Japan?",
-      "options": ["Baseball", "Sumo", "Karate", "Judo"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the capital of Canada?",
-      "options": ["Toronto", "Ottawa", "Vancouver", "Montreal"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Who invented the telephone?",
-      "options": ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Guglielmo Marconi"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the smallest bone in the human body?",
-      "options": ["Femur", "Stapes", "Clavicle", "Phalanges"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the chemical formula for table salt?",
-      "options": ["NaCl", "KCl", "CaCl2", "MgCl2"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the hardest natural substance on Earth?",
-      "options": ["Gold", "Iron", "Diamond", "Quartz"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Which country is known for its tulips?",
-      "options": ["Netherlands", "Belgium", "Germany", "France"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the main ingredient in sushi?",
-      "options": ["Bread", "Rice", "Noodles", "Fish"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "How many teeth does an adult human have?",
-      "options": ["28", "30", "32", "34"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the currency of Japan?",
-      "options": ["Yuan", "Won", "Yen", "Dollar"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the tallest mountain in the world?",
-      "options": ["Mount Everest", "K2", "Kangchenjunga", "Lhotse"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "Which country is the largest by area?",
-      "options": ["USA", "China", "Russia", "Canada"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Who developed the theory of relativity?",
-      "options": ["Newton", "Einstein", "Hawking", "Tesla"],
+      "question": "Qual das seguintes atividades economicas e incentivada no Geoparque Cacapava?",
+      "options": [
+        "Extracao intensiva de petroleo",
+        "Agricultura familiar e artesanato",
+        "Industria siderurgica",
+        "Construcao de rodovias"
+      ],
       "correctAnswer": 1
     }
   ]
