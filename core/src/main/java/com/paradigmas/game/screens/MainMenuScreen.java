@@ -14,7 +14,6 @@ import static com.paradigmas.game.utils.ScreenType.*;
 public class MainMenuScreen extends SuperScreen {
     public MainMenuScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
         super(game, backgroundTexturePath, backgroundMusicPath);
-
         String[] textButtons = {"Jogar", "Sobre", "Sair"};
         ButtonAction[] action = {
             () -> super.game.getScreenManager().showScreen(SELECT_SCREEN),

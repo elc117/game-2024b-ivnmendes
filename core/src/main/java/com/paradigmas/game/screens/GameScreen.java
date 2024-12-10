@@ -10,7 +10,7 @@ import com.paradigmas.game.entities.Enemy;
 import com.paradigmas.game.entities.Paradigmer;
 import com.paradigmas.game.ui.ButtonAction;
 import com.paradigmas.game.ui.Button;
-import com.paradigmas.game.ui.QuizGenerator;
+import com.paradigmas.game.utils.QuizGenerator;
 import com.paradigmas.game.utils.ScreenType;
 
 import java.util.HashMap;
