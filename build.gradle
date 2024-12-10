@@ -29,8 +29,8 @@ repositories {
 }
 
 tasks.register('generateAssetList') {
-  inputs.dir("${project.rootDir}/assets/")
-  File assetsFolder = new File("${project.rootDir}/assets/")
+  inputs.dir("${project.rootDir}/core/assets/")
+  File assetsFolder = new File("${project.rootDir}/core/assets/")
   File assetsFile = new File(assetsFolder, "assets.txt")
   assetsFile.delete()
   fileTree(assetsFolder).collect { assetsFolder.relativePath(it) }.sort().each {
@@ -63,9 +63,9 @@ configure(subprojects) {
   // From https://lyze.dev/2021/04/29/libGDX-Internal-Assets-List/
   // The article can be helpful when using assets.txt in your project.
   tasks.register('generateAssetList') {
-    inputs.dir("${project.rootDir}/assets/")
+    inputs.dir("${project.rootDir}/core/assets/")
     // projectFolder/assets
-    File assetsFolder = new File("${project.rootDir}/assets/")
+    File assetsFolder = new File("${project.rootDir}/core/assets/")
     // projectFolder/assets/assets.txt
     File assetsFile = new File(assetsFolder, "assets.txt")
     // delete that file in case we've already created it
@@ -111,7 +111,6 @@ subprojects {
     implementation "com.badlogicgames.gdx:gdx:1.9.10"
     implementation "com.badlogicgames.gdx:gdx-freetype:1.9.10"
     implementation "com.badlogicgames.gdx:gdx-freetype-platform:1.9.10:natives-desktop"
-    implementation 'com.google.code.gson:gson:2.11.0'
   }
 }
 
