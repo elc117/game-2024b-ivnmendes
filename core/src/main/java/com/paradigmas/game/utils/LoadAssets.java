@@ -2,6 +2,7 @@ package com.paradigmas.game.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -30,6 +31,15 @@ public abstract class LoadAssets {
         }
     }
 
+    public static Sound loadSound(String path) {
+        try {
+            Sound sound = Gdx.audio.newSound(Gdx.files.internal(path));
+            return sound;
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao carregar som: " + path, e);
+        }
+    }
+
     public static Skin loadSkin(String path) {
         try {
             return new Skin(Gdx.files.internal(path));
@@ -46,12 +56,14 @@ public abstract class LoadAssets {
         }
     }
 
-    public static BitmapFont loadFont(String path, int fontSize, Color color){
+    public static BitmapFont loadFont(String path, int fontSize, Color color, Color colorBorder){
         try {
             FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(path));
             FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
             parameter.color = color;
+            parameter.borderWidth = 1.7f;
+            parameter.borderColor = colorBorder;
             parameter.size = fontSize;
 
             BitmapFont font = generator.generateFont(parameter);

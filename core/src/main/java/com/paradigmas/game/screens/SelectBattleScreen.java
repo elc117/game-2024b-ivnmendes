@@ -1,25 +1,20 @@
 package com.paradigmas.game.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.paradigmas.game.Main;
+
+import com.paradigmas.game.ParadigmersAdventure;
 import com.paradigmas.game.entities.Enemy;
 import com.paradigmas.game.entities.Paradigmer;
 import com.paradigmas.game.ui.ButtonAction;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.utils.QuizGenerator;
-import com.paradigmas.game.utils.ScreenType;
-
-import java.util.HashMap;
 
 import static com.paradigmas.game.utils.FontType.TITLE;
 import static com.paradigmas.game.utils.ScreenType.*;
 
-public class GameScreen extends SuperScreen {
-    public GameScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
+public class SelectBattleScreen extends SuperScreen {
+    public SelectBattleScreen(ParadigmersAdventure game, String backgroundTexturePath, String backgroundMusicPath) {
         super(game, backgroundTexturePath, backgroundMusicPath);
 
         String[] level = { "Geoparque Quarta-Colonia", "Geaoparque Cacapava", "Jardim Botanico" };
@@ -33,13 +28,15 @@ public class GameScreen extends SuperScreen {
                 super.game,
                 level[i],
                 1f,
-                super.worldHeight / 2 + buttonDistance,
-                5.2f,
+                super.worldHeight / 2f + buttonDistance,
+                6.2f,
                 1f,
-                action
+                action,
+                Align.left
             );
 
             super.addButton(button);
+            button.getButton().padLeft(1f);
             buttonDistance -= 1.5f;
         }
 
@@ -48,11 +45,12 @@ public class GameScreen extends SuperScreen {
         Button button = new Button(
             super.game,
             text,
-            super.getWorldWidth() - 1,
-            0,
+            super.getWorldWidth() - 1.3f,
+            0f,
             1.3f,
             1f,
-            action
+            action,
+            Align.center
         );
 
         super.addButton(button);
@@ -67,8 +65,8 @@ public class GameScreen extends SuperScreen {
         );
         float textWidth = layout.width;
         float textHeight = layout.height;
-        float x = (worldWidth - textWidth) / 2 + 2;
-        float y = (worldHeight + textHeight) / 2 + 3.5f;
+        float x = (worldWidth - textWidth) / 2f + 2f;
+        float y = (worldHeight + textHeight) / 2f + 3.5f;
         float targetWidth = super.worldWidth;
         int alignment = Align.left;
         super.game.getFontHashMap().get(TITLE).draw(

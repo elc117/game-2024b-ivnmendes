@@ -4,13 +4,11 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.badlogic.gdx.backends.gwt.GwtGraphics;
 import com.badlogic.gdx.graphics.g2d.freetype.gwt.inject.OnCompletion;
-import com.google.gwt.core.client.ScriptInjector;
 import com.badlogic.gdx.graphics.g2d.freetype.gwt.*;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
-import com.paradigmas.game.Main;
+import com.paradigmas.game.ParadigmersAdventure;
 
 import static com.ibm.icu.impl.number.AffixPatternProvider.Flags.PADDING;
 
@@ -31,7 +29,7 @@ public class GwtLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener createApplicationListener () {
-            return new Main();
+            return new ParadigmersAdventure();
         }
 
         @Override

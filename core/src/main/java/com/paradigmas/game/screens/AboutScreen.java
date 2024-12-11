@@ -1,45 +1,70 @@
 package com.paradigmas.game.screens;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.paradigmas.game.Main;
+
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.utils.Align;
+import com.paradigmas.game.ParadigmersAdventure;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
+import com.paradigmas.game.utils.LoadAssets;
 
-import static com.paradigmas.game.utils.FontType.TITLE;
+import static com.paradigmas.game.utils.FontType.*;
 import static com.paradigmas.game.utils.ScreenType.MAIN_SCREEN;
 
 public class AboutScreen extends SuperScreen {
-    public AboutScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
+    private final Sprite textBackground;
+    public AboutScreen(ParadigmersAdventure game, String backgroundTexturePath, String backgroundMusicPath) {
         super(game, backgroundTexturePath, backgroundMusicPath);
 
+        textBackground = LoadAssets.loadSprite("images/aboutTextBackground.png", 16f, 9f);
+        textBackground.setColor(1f, 1f, 1f, 0.8f);
         String text = "<-";
-        ButtonAction action = () -> super.game.getScreenManager().showScreen(MAIN_SCREEN);
+        ButtonAction action = () -> game.getScreenManager().showScreen(MAIN_SCREEN);
         Button button = new Button(
-            super.game,
+            game,
             text,
-            super.getWorldWidth() - 1,
-            0,
+            super.getWorldWidth() - 1.3f,
+            0f,
             1.3f,
             1f,
-            action
+            action,
+            Align.center
         );
 
-        super.addButton(button);
+        addButton(button);
     }
 
     @Override
     public void draw(float delta) {
         GlyphLayout layout = new GlyphLayout(
-            super.game.getFontHashMap().get(TITLE),
+            game.getFontHashMap().get(TITLE),
             "Sobre"
         );
         float textWidth = layout.width;
-        super.game.getFontHashMap().get(TITLE).draw(
-            super.game.getBatch(),
+        game.getFontHashMap().get(TITLE).draw(
+            game.getBatch(),
             "Sobre",
             (worldWidth - textWidth) / 2,
             worldHeight
+        );
+
+        textBackground.setPosition(0, 0);
+        textBackground.draw(game.getBatch());
+
+        String text = "Como um bom paradigmer, voce decide se aventurar por pontos turisticos na regiao. Durante suas aventuras, voce acaba encontrando seres hostis que podem ser derrotados apenas com o seu conhecimento sobre os lugares visitados, boa sorte!";
+        float x = 0.5f;
+        float y = worldHeight / 2f + 2.9f;
+        float targetWidth = worldWidth - 1f;
+        int alignment = Align.left;
+        game.getFontHashMap().get(TEXT).draw(
+            game.getBatch(),
+            text,
+            x,
+            y,
+            targetWidth,
+            alignment,
+            true
         );
     }
 
@@ -62,9 +87,4 @@ public class AboutScreen extends SuperScreen {
     public void hide() {
 
     }
-
-    public void dispose() {
-        super.dispose();
-    }
-
 }

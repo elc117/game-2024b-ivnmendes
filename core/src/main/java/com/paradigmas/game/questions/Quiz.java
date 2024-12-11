@@ -1,6 +1,5 @@
 package com.paradigmas.game.questions;
 
-
 import java.util.ArrayList;
 import java.util.Random;
 

@@ -1,15 +1,15 @@
 package com.paradigmas.game.screens;
 
-import com.paradigmas.game.Main;
+import com.paradigmas.game.ParadigmersAdventure;
 import com.paradigmas.game.utils.ScreenType;
 
 import java.util.HashMap;
 
 public class ScreenManager {
-    private final Main game;
+    private final ParadigmersAdventure game;
     private final HashMap<ScreenType, SuperScreen> screens;
 
-    public ScreenManager(Main game) {
+    public ScreenManager(ParadigmersAdventure game) {
         this.game = game;
         screens = new HashMap<>();
     }
@@ -27,7 +27,7 @@ public class ScreenManager {
         game.setScreen(screen);
     }
 
-    public Main getGame() {
+    public ParadigmersAdventure getGame() {
         return game;
     }
 
