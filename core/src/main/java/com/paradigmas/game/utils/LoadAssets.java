@@ -2,6 +2,7 @@ package com.paradigmas.game.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -27,6 +28,15 @@ public abstract class LoadAssets {
             return music;
         } catch (Exception e) {
             throw new RuntimeException("Erro ao carregar música: " + path, e);
+        }
+    }
+
+    public static Sound loadSound(String path) {
+        try {
+            Sound sound = Gdx.audio.newSound(Gdx.files.internal(path));
+            return sound;
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao carregar som: " + path, e);
         }
     }
 

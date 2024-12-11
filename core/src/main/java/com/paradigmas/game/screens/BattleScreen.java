@@ -1,6 +1,7 @@
 package com.paradigmas.game.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Align;
 
@@ -27,6 +28,8 @@ public class BattleScreen extends SuperScreen {
     private final float lifeDecayRateParadigmer;
     private final float lifeDecayRateEnemy;
     private final Paradigmer paradigmer;
+    private final Sound hitSound;
+    private final Sound missSound;
     private final Sprite uiTextSprite;
     private final Sprite uiLifeBarSprite;
     private final Sprite[] uiLifeBarChunkSprite = new Sprite[3];
@@ -57,6 +60,9 @@ public class BattleScreen extends SuperScreen {
         uiTextSprite = LoadAssets.loadSprite("sprites/uiMenu.png", 17f, 3f);
         uiLifeBarSprite = LoadAssets.loadSprite("sprites/lifeBar.png", 5f, 2f);
         uiQuestionSprite = LoadAssets.loadSprite("sprites/questionSelection.png", 8f, 4f);
+
+        hitSound = LoadAssets.loadSound("sounds/hit.ogg");
+        missSound = LoadAssets.loadSound("sounds/miss.ogg");
 
         this.backgroundTexturePath = backgroundTexturePath;
         this.enemy = enemy;
@@ -91,7 +97,6 @@ public class BattleScreen extends SuperScreen {
         addButton(button);
 
         initializeButtons();
-
     }
 
     @Override
@@ -370,6 +375,12 @@ public class BattleScreen extends SuperScreen {
 
     private void questionAnswered(int option) {
         isCorrect = actualQuestion.answerQuestion(option);
+        if (isCorrect) {
+            hitSound.play(1f);
+        } else {
+            missSound.play(0.6f);
+        }
+
         status = ANSWERED;
         timePassed = 0f;
     }

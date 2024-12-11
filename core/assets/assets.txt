@@ -11,6 +11,10 @@ questions/quiz-1.json
 questions/quiz-2.json
 sounds/backgroundMusic.mp3
 sounds/battleMusic.mp3
+sounds/hit.m4a
+sounds/hit.ogg
+sounds/miss.m4a
+sounds/miss.ogg
 sounds/victoryMusic.mp3
 sprites/RedDinosaur.png
 sprites/abra.png
