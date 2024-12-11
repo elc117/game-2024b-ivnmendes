@@ -87,11 +87,12 @@ public class BattleScreen extends SuperScreen {
         Button button = new Button(
             game,
             text,
-            getWorldWidth() - 1f,
+            getWorldWidth() - 2f,
             getWorldHeight() - 1f,
-            1.3f,
+            2f,
             1f,
-            action
+            action,
+            Align.center
         );
 
         addButton(button);
@@ -220,6 +221,7 @@ public class BattleScreen extends SuperScreen {
                 break;
             case ANSWERED:
             case WAITING_NEXT_QUESTION:
+            case ENDING:
                 if (isCorrect) {
                     textToDraw = "Resposta correta! " + paradigmer.getConsecutiveHits() + " acertos consecutivos!";
                     break;
@@ -306,10 +308,14 @@ public class BattleScreen extends SuperScreen {
                 break;
         }
 
-        if (paradigmer.getLife() == 0) {
+        if (currentLifeParadigmer == 0) {
             setEndGameScreen(false);
-        } else if (enemy.getLife() == 0) {
+        } else if (currentLifeEnemy == 0) {
             setEndGameScreen(true);
+        }
+
+        if (paradigmer.getLife() <= 0 || enemy.getLife() <= 0) {
+            status = ENDING;
         }
     }
 
@@ -404,7 +410,8 @@ public class BattleScreen extends SuperScreen {
                     1.7f - buttonDistanceY,
                     3f,
                     1f,
-                    action
+                    action,
+                    Align.center
                 );
 
                 addButton(button);

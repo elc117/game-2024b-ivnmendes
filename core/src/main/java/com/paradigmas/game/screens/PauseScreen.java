@@ -2,6 +2,7 @@ package com.paradigmas.game.screens;
 
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 
+import com.badlogic.gdx.utils.Align;
 import com.paradigmas.game.ParadigmersAdventure;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
@@ -30,7 +31,8 @@ public class PauseScreen extends SuperScreen {
                 worldHeight / 2f + buttonDistance,
                 2f,
                 1f,
-                actions[i]
+                actions[i],
+                Align.center
             );
             addButton(button);
             buttonDistance -= 1.5f;

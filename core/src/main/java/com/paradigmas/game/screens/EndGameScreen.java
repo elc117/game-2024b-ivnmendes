@@ -27,7 +27,8 @@ public class EndGameScreen extends SuperScreen {
             getWorldHeight() / 2f - 3f,
             2f,
             1f,
-            action
+            action,
+            Align.center
         );
 
         addButton(button);

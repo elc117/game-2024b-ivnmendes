@@ -29,12 +29,14 @@ public class SelectBattleScreen extends SuperScreen {
                 level[i],
                 1f,
                 super.worldHeight / 2f + buttonDistance,
-                5.2f,
+                6.2f,
                 1f,
-                action
+                action,
+                Align.left
             );
 
             super.addButton(button);
+            button.getButton().padLeft(1f);
             buttonDistance -= 1.5f;
         }
 
@@ -43,11 +45,12 @@ public class SelectBattleScreen extends SuperScreen {
         Button button = new Button(
             super.game,
             text,
-            super.getWorldWidth() - 1f,
+            super.getWorldWidth() - 1.3f,
             0f,
             1.3f,
             1f,
-            action
+            action,
+            Align.center
         );
 
         super.addButton(button);

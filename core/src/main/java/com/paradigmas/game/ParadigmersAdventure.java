@@ -80,12 +80,12 @@ public class ParadigmersAdventure extends Game {
     private void initializeFonts(HashMap<FontType, BitmapFont> fontHashMap) {
         String path = "font/font.TTF";
         FontType[] fontTypes = FontType.values();
-        //TEXT_BATTLE, TEXT_QUESTION, TITLE, BUTTON
-        Color[] colorTypes = {BLACK, WHITE, WHITE, WHITE};
-        Color[] colorBorder = {WHITE, BLACK, BLACK, BLACK};
-        int[] sizes = {25, 25, 100, 20};
+        //TEXT_BATTLE, TEXT_QUESTION, TEXT, TITLE, BUTTON
+        Color[] colorTypes = {BLACK, WHITE, WHITE, WHITE, BLACK};
+        Color[] colorBorder = {WHITE, BLACK, BLACK, BLACK, WHITE};
+        int[] sizes = {25, 25, 50, 100, 20};
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < fontTypes.length; i++) {
             fontHashMap.put(fontTypes[i], LoadAssets.loadFont(path, sizes[i], colorTypes[i], colorBorder[i]));
             fontHashMap.get(fontTypes[i]).setUseIntegerPositions(false);
             fontHashMap.get(fontTypes[i]).getData().setScale(

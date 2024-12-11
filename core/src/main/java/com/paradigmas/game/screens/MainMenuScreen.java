@@ -30,7 +30,8 @@ public class MainMenuScreen extends SuperScreen {
                 worldHeight / 2f + buttonDistance,
                 2f,
                 1f,
-                action[i]
+                action[i],
+                Align.center
             );
             addButton(button);
             buttonDistance -= 1.5f;
