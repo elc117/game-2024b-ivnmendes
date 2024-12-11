@@ -32,6 +32,8 @@ Demorei um pouco para entender como posicionar os elementos da tela, mas após c
 Inicialmente o projeto foi inspirado em um jogo chamado [ColoniaRPG](https://github.com/elc117/game-2023b-coloniarpg), desenvolvido na mesma disciplina no ano passado. Com o andamento do projeto, o jogo ficou cada vez mais distante do jogo original, mas ainda assim, a ideia de um jogo de batalha com perguntas e respostas foi mantida.
 Acredito que consegui seguir o paradigma e evitei ao máximo criar uma "Super classe" que faz tudo. A única classe que acabou ficando com muitos métodos e atributos foi a "BattleScreen", que é a tela de batalha, onde ocorre a maior parte da lógica do jogo.
 
+[Clique aqui para jogar](https://ivnmendes.itch.io/paradigmersadventure)
+
 ## Diagrama de classes
 
 ![alt text](image.png)
