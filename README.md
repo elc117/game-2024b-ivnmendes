@@ -49,6 +49,7 @@ Acredito que consegui seguir o paradigma e evitei ao máximo criar uma "Super cl
 - [Som de acerto](https://www.youtube.com/watch?v=mhgOQmwaic4)
 - [Som de erro](https://www.youtube.com/watch?v=FRpq7o1mKXY)
 - [Botoes](https://github.com/czyzby/gdx-skins?tab=readme-ov-file)
+- [Font](https://www.dafont.com/pt/04b-30.font)
 
 ### Código
 
