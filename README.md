@@ -18,3 +18,4 @@
 * https://br.pinterest.com/pin/1137299712132331616/
 * https://lineacross.itch.io/dino-2d
 * assets utilizados:https://www.coromon.com/press/
+* https://pixabay.com/pt/music/jogos-de-video-8-bit-arcade-138828/

@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.paradigmas.game.Main;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
+import com.paradigmas.game.utils.ScreenType;
 
 import static com.paradigmas.game.utils.FontType.TITLE;
 import static com.paradigmas.game.utils.ScreenType.*;
@@ -17,8 +18,8 @@ public class MainMenuScreen extends SuperScreen {
         super(game, backgroundTexturePath, backgroundMusicPath);
         String[] textButtons = {"Jogar", "Sobre", "Sair"};
         ButtonAction[] action = {
-            () -> super.game.getScreenManager().showScreen(SELECT_SCREEN),
-            () -> super.game.getScreenManager().showScreen(ABOUT_SCREEN),
+            () -> game.getScreenManager().showScreen(SELECT_SCREEN),
+            () -> game.getScreenManager().showScreen(ABOUT_SCREEN),
             () -> Gdx.app.exit()
         };
 
@@ -40,30 +41,7 @@ public class MainMenuScreen extends SuperScreen {
     }
 
     @Override
-    public void show() {
-        super.backgroundMusic.play();
-        Gdx.input.setInputProcessor(super.stage);
-    }
-
-    @Override
     public void draw(float delta) {
-        ScreenUtils.clear(Color.BLACK);
-
-        super.game.getViewport().apply();
-        super.game.getBatch().setProjectionMatrix(
-            super.game.getViewport().getCamera().combined
-        );
-
-        super.game.getBatch().begin();
-
-        super.game.getBatch().draw(
-            backgroundTexture,
-            0,
-            0,
-            worldWidth,
-            worldHeight
-        );
-
         String text = "Paradigmer's Adventure";
         GlyphLayout layout = new GlyphLayout(
             super.game.getFontHashMap().get(TITLE),
@@ -84,15 +62,12 @@ public class MainMenuScreen extends SuperScreen {
             alignment,
             true
         );
+    }
 
-        super.game.getBatch().end();
-
-        super.stage.act(
-            Math.min(
-                Gdx.graphics.getDeltaTime(), 1 / 30f
-            )
-        );
-        super.stage.draw();
+    @Override
+    public void show() {
+        super.show();
+        super.backgroundMusic.play();
     }
 
     @Override

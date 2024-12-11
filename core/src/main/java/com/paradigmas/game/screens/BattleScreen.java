@@ -79,22 +79,6 @@ public class BattleScreen extends SuperScreen {
 
     @Override
     public void draw(float delta) {
-        ScreenUtils.clear(Color.BLACK);
-        super.game.getViewport().apply();
-        super.game.getBatch().setProjectionMatrix(
-            super.game.getViewport().getCamera().combined
-        );
-
-        super.game.getBatch().begin();
-
-        super.game.getBatch().draw(
-            backgroundTexture,
-            0,
-            0,
-            worldWidth,
-            worldHeight
-        );
-
         //sprite inimigo
         enemy.getSprite().setPosition(super.worldWidth/2 + 0.5f, super.worldHeight/2 - 0.9f);
         enemy.getSprite().draw(game.getBatch());
@@ -110,15 +94,6 @@ public class BattleScreen extends SuperScreen {
         drawPlayerLifeBar();
 
         drawUiQuestion(delta);
-
-        super.game.getBatch().end();
-
-        super.stage.act(
-            Math.min(
-                Gdx.graphics.getDeltaTime(), 1 / 30f
-            )
-        );
-        super.stage.draw();
     }
 
     private void drawEnemyLifeBar() {
@@ -300,7 +275,9 @@ public class BattleScreen extends SuperScreen {
         HashMap<ScreenType, SuperScreen> screens = screenManager.getScreens();
         screens.remove(END_SCREEN);
 
-        String backgroundMusicPath = "sounds/backgroundMusic.mp3";
+        super.backgroundMusic.stop();
+
+        String backgroundMusicPath = "sounds/victoryMusic.mp3";
         EndGameScreen endGameScreen = new EndGameScreen(super.game, backgroundTexturePath, backgroundMusicPath, result);
         screens.put(END_SCREEN, endGameScreen);
         screenManager.showScreen(END_SCREEN);
@@ -308,7 +285,8 @@ public class BattleScreen extends SuperScreen {
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(super.stage);
+        super.show();
+        super.backgroundMusic.play();
     }
 
     @Override

@@ -3,15 +3,20 @@ package com.paradigmas.game.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.paradigmas.game.Main;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.utils.LoadAssets;
+import com.paradigmas.game.utils.ScreenType;
 
 import java.util.ArrayList;
+
+import static com.paradigmas.game.utils.ScreenType.SELECT_SCREEN;
 
 public abstract class SuperScreen implements Screen {
     protected final Main game;
@@ -41,7 +46,38 @@ public abstract class SuperScreen implements Screen {
     @Override
     public void render(float delta) {
         logic(delta);
+        initDraw();
         draw(delta);
+        endDraw();
+    }
+
+    private void initDraw() {
+        ScreenUtils.clear(Color.BLACK);
+        game.getViewport().apply();
+        game.getBatch().setProjectionMatrix(
+            game.getViewport().getCamera().combined
+        );
+
+        game.getBatch().begin();
+
+        game.getBatch().draw(
+            backgroundTexture,
+            0,
+            0,
+            worldWidth,
+            worldHeight
+        );
+    }
+
+    private void endDraw() {
+        game.getBatch().end();
+
+        stage.act(
+            Math.min(
+                Gdx.graphics.getDeltaTime(), 1 / 30f
+            )
+        );
+        stage.draw();
     }
 
     public abstract void draw(float delta);
@@ -86,6 +122,11 @@ public abstract class SuperScreen implements Screen {
         return game;
     }
 
+    @Override
+    public void show() {
+        Gdx.input.setInputProcessor(stage);
+    }
+
     public Texture getBackgroundTexture() {
         return backgroundTexture;
     }
@@ -108,14 +149,6 @@ public abstract class SuperScreen implements Screen {
 
     public float getWorldHeight() {
         return worldHeight;
-    }
-
-    public void setWorldHeight(float worldHeight) {
-        this.worldHeight = worldHeight;
-    }
-
-    public void setWorldWidth(float worldWidth) {
-        this.worldWidth = worldWidth;
     }
 }
 

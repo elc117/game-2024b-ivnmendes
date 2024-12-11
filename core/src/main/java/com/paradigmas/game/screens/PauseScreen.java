@@ -17,8 +17,8 @@ public class PauseScreen extends SuperScreen {
         super(game, backgroundTexturePath, backgroundMusicPath);
 
         ButtonAction[] actions = {
-            () -> super.game.getScreenManager().showScreen(BATTLE_SCREEN),
-            () -> super.game.getScreenManager().showScreen(MAIN_SCREEN)
+            () -> changeScreen(BATTLE_SCREEN),
+            () -> changeScreen(MAIN_SCREEN)
         };
 
         String[] textButtons = {"Continuar", "Menu"};
@@ -41,13 +41,6 @@ public class PauseScreen extends SuperScreen {
 
     @Override
     public void draw(float delta) {
-        ScreenUtils.clear(Color.GRAY);
-
-        super.game.getViewport().apply();
-        super.game.getBatch().setProjectionMatrix(super.game.getViewport().getCamera().combined);
-
-        super.game.getBatch().begin();
-
         GlyphLayout layout = new GlyphLayout(super.game.getFontHashMap().get(TITLE), "Pausado");
         float textWidth = layout.width;
         float textHeight = layout.height;
@@ -57,22 +50,21 @@ public class PauseScreen extends SuperScreen {
             (worldWidth - textWidth) / 2,
             (worldHeight + textHeight) / 2 + 1.9f
         );
+    }
 
-        super.game.getBatch().end();
+    public void changeScreen(ScreenType screenType) {
+        if (screenType == MAIN_SCREEN) {
+            super.game.getScreenManager().getScreen(BATTLE_SCREEN).getBackgroundMusic().stop();
+            super.game.getScreenManager().showScreen(screenType);
+            return;
+        }
 
-        super.stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-        super.stage.draw();
+        super.game.getScreenManager().showScreen(screenType);
     }
 
     @Override
     public void logic(float delta) {
 
-    }
-
-    @Override
-    public void show() {
-        super.backgroundMusic.pause();
-        Gdx.input.setInputProcessor(super.stage);
     }
 
     @Override

@@ -34,4 +34,6 @@ public class ScreenManager {
     public HashMap<ScreenType, SuperScreen> getScreens() {
         return screens;
     }
+
+    public SuperScreen getScreen(ScreenType screenType) { return screens.get(screenType); }
 }

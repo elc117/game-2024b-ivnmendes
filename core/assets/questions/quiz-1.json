@@ -67,16 +67,16 @@
     },
     {
       "question": "Em qual periodo geologico foram formadas as rochas do Geoparque Cacapava?",
-      "options": ["Pre-Cambriano", "Paleozoico", "Mesozoico", "Cenozoico"],
+      "options": ["Pleistoceno", "Paleozoico", "Mesozoico", "Cenozoico"],
       "correctAnswer": 0
     },
     {
-      "question": "O Geoparque Cacapava tambem e conhecido por abrigar formacoes que sao importantes para qual area?",
+      "question": "Cacapava do sul e considerada a Capital Gaucha da:?",
       "options": [
-        "Pesquisa paleontologica",
-        "Historia do ciclo do ouro",
-        "Estudos de biodiversidade",
-        "Producao industrial de energia"
+        "Melancia",
+        "Geodiversidade",
+        "Biodiversidade",
+        "Paleontologia"
       ],
       "correctAnswer": 1
     },
