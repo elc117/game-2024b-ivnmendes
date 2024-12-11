@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
+import com.badlogic.gdx.backends.gwt.GwtGraphics;
 import com.badlogic.gdx.graphics.g2d.freetype.gwt.inject.OnCompletion;
 import com.badlogic.gdx.graphics.g2d.freetype.gwt.*;
 import com.google.gwt.event.logical.shared.ResizeEvent;
@@ -17,14 +18,14 @@ public class GwtLauncher extends GwtApplication {
         @Override
         public GwtApplicationConfiguration getConfig () {
             // Resizable application, uses available space in browser with no padding:
-//            GwtApplicationConfiguration cfg = new GwtApplicationConfiguration(true);
-//            cfg.padVertical = 0;
-//            cfg.padHorizontal = 0;
-//            cfg.fullscreenOrientation = GwtGraphics.OrientationLockType.LANDSCAPE;
-//            return cfg;
+            GwtApplicationConfiguration cfg = new GwtApplicationConfiguration(true);
+            cfg.padVertical = 0;
+            cfg.padHorizontal = 0;
+            cfg.fullscreenOrientation = GwtGraphics.OrientationLockType.LANDSCAPE;
+            return cfg;
             // If you want a fixed size application, comment out the above resizable section,
             // and uncomment below:
-            return new GwtApplicationConfiguration(1024, 760);
+//            return new GwtApplicationConfiguration(1024, 760);
         }
 
         @Override

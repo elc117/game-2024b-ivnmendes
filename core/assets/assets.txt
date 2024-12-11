@@ -13,9 +13,6 @@ sounds/battleMusic.mp3
 sounds/hit.ogg
 sounds/miss.ogg
 sounds/victoryMusic.mp3
-sprites/RedDinosaur.png
-sprites/abra.png
-sprites/charmander.png
 sprites/dinosaur.gif
 sprites/greenLife.png
 sprites/guardian.gif
@@ -24,7 +21,6 @@ sprites/paradigmer.png
 sprites/plantMonster.png
 sprites/questionSelection.png
 sprites/redLife.png
-sprites/treecko.png
 sprites/uiMenu.png
 sprites/yellowLife.png
 ui/button-over.png
