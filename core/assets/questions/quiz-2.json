@@ -1,224 +1,90 @@
 {
   "questions": [
     {
-      "question": "What is the capital of France?",
-      "options": ["Paris", "London", "Berlin", "Rome"],
+      "question": "Em qual campus da UFSM esta localizado o Jardim Botanico?",
+      "options": ["Cachoeira do Sul", "Santa Maria", "Frederico Westphalen", "Palmeiras das missoes"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Qual e o objetivo principal do Jardim Botanico da UFSM?",
+      "options": [
+        "Servir como area de lazer para estudantes",
+        "Preservar a biodiversidade local e promover o estudo das plantas",
+        "Desenvolver pesquisas sobre agricultura comercial",
+        "Construir um centro de tecnologia"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "question": "O Jardim Botanico da UFSM ocupa uma area de aproximadamente quantos hectares?",
+      "options": ["5", "10", "13", "20"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Quantas especies de plantas o Jardim Botanico da UFSM abriga?",
+      "options": ["257", "321", "349", "400"],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Qual e um dos principais tipos de vegetacao encontrados no Jardim Botanico da UFSM?",
+      "options": [
+        "Mata Atlantica",
+        "Cerrado",
+        "Pampa",
+        "Caatinga"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Qual e a principal funcao do Jardim Botanico da UFSM em relacao a pesquisa?",
+      "options": [
+        "Estudos sobre a poluicao do solo",
+        "Pesquisas sobre biodiversidade e conservacao",
+        "Aprimoramento de cultivos agricolas comerciais",
+        "Investigacoes sobre urbanizacao"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "question": "O Jardim Botanico da UFSM oferece atividades de educacao ambiental?",
+      "options": ["Sim", "Nao", "Somente em epocas especificas", "Nao e permitido visitacao"],
       "correctAnswer": 0
     },
     {
-      "question": "Which planet is known as the Red Planet?",
-      "options": ["Earth", "Mars", "Jupiter", "Venus"],
-      "correctAnswer": 1
+      "question": "Qual e o tipo de trilha que pode ser encontrado no Jardim Botanico da UFSM?",
+      "options": [
+        "Trilhas aquaticas",
+        "Trilhas de observacao de aves",
+        "Trilhas de caminhada ecologica",
+        "Trilhas subterraneas"
+      ],
+      "correctAnswer": 2
     },
     {
-      "question": "Who wrote 'Romeo and Juliet'?",
-      "options": ["William Shakespeare", "Charles Dickens", "Mark Twain", "Jane Austen"],
+      "question": "O Jardim Botanico da UFSM é um espaco museal de qual tipo?",
+      "options": [
+        "Museu de Ciencias Naturais",
+        "Museu de Arte Contemporanea",
+        "Museu Historico",
+        "Museu de Historia Natural"
+      ],
       "correctAnswer": 0
     },
     {
-      "question": "What is 5 + 7?",
-      "options": ["10", "11", "12", "13"],
+      "question": "O Jardim Botanico da UFSM e um importante local de que tipo de pratica?",
+      "options": [
+        "Turismo de massa",
+        "Recreacao e lazer",
+        "Educacao cientifica e ambiental",
+        "Construcao de novos empreendimentos"
+      ],
       "correctAnswer": 2
     },
     {
-      "question": "What is the chemical symbol for water?",
-      "options": ["O2", "H2O", "CO2", "NaCl"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Which year did the Titanic sink?",
-      "options": ["1910", "1912", "1914", "1916"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Who painted the Mona Lisa?",
-      "options": ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Claude Monet"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "Which animal is known as the King of the Jungle?",
-      "options": ["Tiger", "Lion", "Elephant", "Leopard"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "How many continents are there?",
-      "options": ["5", "6", "7", "8"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the largest mammal?",
-      "options": ["Elephant", "Blue Whale", "Giraffe", "Orca"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Which gas do plants use for photosynthesis?",
-      "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the square root of 64?",
-      "options": ["6", "7", "8", "9"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Which ocean is the largest?",
-      "options": ["Atlantic", "Indian", "Pacific", "Arctic"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the boiling point of water?",
-      "options": ["50°C", "75°C", "100°C", "125°C"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Which country is known as the Land of the Rising Sun?",
-      "options": ["China", "Japan", "Thailand", "India"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the longest river in the world?",
-      "options": ["Amazon", "Nile", "Yangtze", "Mississippi"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the smallest prime number?",
-      "options": ["0", "1", "2", "3"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Which element has the atomic number 1?",
-      "options": ["Hydrogen", "Helium", "Lithium", "Carbon"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the capital of Italy?",
-      "options": ["Venice", "Rome", "Milan", "Naples"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Which planet has the most moons?",
-      "options": ["Earth", "Mars", "Jupiter", "Saturn"],
-      "correctAnswer": 3
-    },
-    {
-      "question": "What is the main ingredient in bread?",
-      "options": ["Salt", "Sugar", "Flour", "Yeast"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "How many legs does a spider have?",
-      "options": ["6", "8", "10", "12"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the capital of Australia?",
-      "options": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Who discovered gravity?",
-      "options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the speed of light?",
-      "options": ["300,000 km/s", "150,000 km/s", "100,000 km/s", "200,000 km/s"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the chemical symbol for gold?",
-      "options": ["Ag", "Au", "Pb", "Fe"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Which country hosted the 2016 Olympics?",
-      "options": ["China", "Brazil", "Russia", "UK"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the largest desert in the world?",
-      "options": ["Sahara", "Gobi", "Kalahari", "Arctic"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the capital of Germany?",
-      "options": ["Berlin", "Munich", "Frankfurt", "Hamburg"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "Which metal is liquid at room temperature?",
-      "options": ["Mercury", "Gold", "Iron", "Silver"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the largest planet in our solar system?",
-      "options": ["Earth", "Mars", "Jupiter", "Saturn"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the national sport of Japan?",
-      "options": ["Baseball", "Sumo", "Karate", "Judo"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the capital of Canada?",
-      "options": ["Toronto", "Ottawa", "Vancouver", "Montreal"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "Who invented the telephone?",
-      "options": ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Guglielmo Marconi"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the smallest bone in the human body?",
-      "options": ["Femur", "Stapes", "Clavicle", "Phalanges"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "What is the chemical formula for table salt?",
-      "options": ["NaCl", "KCl", "CaCl2", "MgCl2"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the hardest natural substance on Earth?",
-      "options": ["Gold", "Iron", "Diamond", "Quartz"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Which country is known for its tulips?",
-      "options": ["Netherlands", "Belgium", "Germany", "France"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "What is the main ingredient in sushi?",
-      "options": ["Bread", "Rice", "Noodles", "Fish"],
-      "correctAnswer": 1
-    },
-    {
-      "question": "How many teeth does an adult human have?",
-      "options": ["28", "30", "32", "34"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the currency of Japan?",
-      "options": ["Yuan", "Won", "Yen", "Dollar"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "What is the tallest mountain in the world?",
-      "options": ["Mount Everest", "K2", "Kangchenjunga", "Lhotse"],
-      "correctAnswer": 0
-    },
-    {
-      "question": "Which country is the largest by area?",
-      "options": ["USA", "China", "Russia", "Canada"],
-      "correctAnswer": 2
-    },
-    {
-      "question": "Who developed the theory of relativity?",
-      "options": ["Newton", "Einstein", "Hawking", "Tesla"],
+      "question": "Em que ano foi criado o Jardim Botanico da UFSM?",
+      "options": ["1980", "1981", "1983", "1984"],
       "correctAnswer": 1
     }
   ]
+
 }

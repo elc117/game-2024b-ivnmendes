@@ -22,18 +22,19 @@ public class GameScreen extends SuperScreen {
     public GameScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
         super(game, backgroundTexturePath, backgroundMusicPath);
 
-        String battleBackgroundPath = "images/battleBackground.jpg";
+        String[] level = { "Geoparque Quarta-Colonia", "Geaoparque Cacapava", "Jardim Botanico" };
         float buttonDistance = 0;
-        for (int i = 1; i < 4; i++) {
-            String title = "Fase " + i;
-            int option = i - 1;
-            ButtonAction action = () -> setBattleScreen(battleBackgroundPath, backgroundMusicPath, option);
+        for (int i = 0; i < 3; i++) {
+            int option = i;
+            String battleBackgroundPath = "backgrounds/battleBackground" + i + ".png";
+            String battleBackgroundMusicPath = "sounds/battleMusic.mp3";
+            ButtonAction action = () -> setBattleScreen(battleBackgroundPath, battleBackgroundMusicPath, option);
             Button button = new Button(
                 super.game,
-                title,
+                level[i],
                 1f,
                 super.worldHeight / 2 + buttonDistance,
-                2f,
+                5.2f,
                 1f,
                 action
             );
@@ -59,22 +60,6 @@ public class GameScreen extends SuperScreen {
 
     @Override
     public void draw(float delta) {
-        ScreenUtils.clear(Color.WHITE);
-        super.game.getViewport().apply();
-        super.game.getBatch().setProjectionMatrix(
-            super.game.getViewport().getCamera().combined
-        );
-
-        super.game.getBatch().begin();
-
-        super.game.getBatch().draw(
-            backgroundTexture,
-            0,
-            0,
-            worldWidth,
-            worldHeight
-        );
-
         String text = "Selecione uma fase:";
         GlyphLayout layout = new GlyphLayout(
             super.game.getFontHashMap().get(TITLE),
@@ -95,25 +80,11 @@ public class GameScreen extends SuperScreen {
             alignment,
             true
         );
-
-        super.game.getBatch().end();
-
-        super.stage.act(
-            Math.min(
-                Gdx.graphics.getDeltaTime(), 1 / 30f
-            )
-        );
-        super.stage.draw();
     }
 
     @Override
     public void logic(float delta) {
 
-    }
-
-    @Override
-    public void show() {
-        Gdx.input.setInputProcessor(super.stage);
     }
 
     @Override
@@ -137,16 +108,17 @@ public class GameScreen extends SuperScreen {
 
     private void setBattleScreen(String backgroundTexturePath, String backgroundMusicPath, int option) {
         ScreenManager screenManager = super.game.getScreenManager();
-        HashMap<ScreenType, SuperScreen> screens = screenManager.getScreens();
-        screens.remove(BATTLE_SCREEN);
+        screenManager.deleteScreen(BATTLE_SCREEN);
 
-        String[] enemySpritePath = {"sprites/treecko.png", "sprites/charmander.png", "sprites/abra.png"};
-        String[] enemyName = {"treecko", "charmander", "abra"};
+        String[] enemySpritePath = {"sprites/dinosaur.gif", "sprites/guardian.gif", "sprites/plantMonster.png"};
+        String[] enemyName = {"Dinossauro", "Golem", "Planta monstro"};
+
+        screenManager.getScreen(MAIN_SCREEN).getBackgroundMusic().stop();
 
         Enemy enemy = new Enemy(enemyName[option], enemySpritePath[option]);
         Paradigmer paradigmer = new Paradigmer("Paradigmer", "sprites/paradigmer.png");
         BattleScreen battleScreen = new BattleScreen(super.game, backgroundTexturePath, backgroundMusicPath, QuizGenerator.quizGenerate(option), enemy, paradigmer);
-        screens.put(BATTLE_SCREEN, battleScreen);
+        screenManager.addScreen(BATTLE_SCREEN, battleScreen);
         screenManager.showScreen(BATTLE_SCREEN);
     }
 }

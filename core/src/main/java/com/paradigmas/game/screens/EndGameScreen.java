@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.paradigmas.game.Main;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
+import com.paradigmas.game.utils.ScreenType;
 
 import static com.paradigmas.game.utils.FontType.TITLE;
 import static com.paradigmas.game.utils.ScreenType.MAIN_SCREEN;
@@ -21,7 +22,7 @@ public class EndGameScreen extends SuperScreen {
         this.result = result;
 
         String text = "menu";
-        ButtonAction action = () -> super.game.getScreenManager().showScreen(MAIN_SCREEN);
+        ButtonAction action = () -> changeScreen(MAIN_SCREEN);
         Button button = new Button(
             super.game,
             text,
@@ -36,22 +37,6 @@ public class EndGameScreen extends SuperScreen {
     }
 
     public void draw(float delta) {
-        ScreenUtils.clear(Color.WHITE);
-        super.game.getViewport().apply();
-        super.game.getBatch().setProjectionMatrix(
-            super.game.getViewport().getCamera().combined
-        );
-
-        super.game.getBatch().begin();
-
-        super.game.getBatch().draw(
-            backgroundTexture,
-            0,
-            0,
-            worldWidth,
-            worldHeight
-        );
-
         String resultText = (result) ? "Parabens, voce venceu!" : "Voce perdeu, mais sorte da proxima vez";
         float xOffset = (result) ? 4 : 12;
         GlyphLayout layout = new GlyphLayout(
@@ -73,25 +58,26 @@ public class EndGameScreen extends SuperScreen {
             alignment,
             true
         );
-
-        super.game.getBatch().end();
-
-        super.stage.act(
-            Math.min(
-                Gdx.graphics.getDeltaTime(), 1 / 30f
-            )
-        );
-        super.stage.draw();
-    }
-
-    @Override
-    public void logic(float delta) {
-
     }
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(super.stage);
+        super.show();
+        if (result) {
+            super.backgroundMusic.play();
+        }
+    }
+
+    public void changeScreen(ScreenType screenType) {
+        if (result) {
+            super.backgroundMusic.stop();
+        }
+
+        super.game.getScreenManager().showScreen(screenType);
+    }
+    @Override
+    public void logic(float delta) {
+
     }
 
     @Override
