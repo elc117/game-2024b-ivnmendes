@@ -1,10 +1,8 @@
 package com.paradigmas.game.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.paradigmas.game.Main;
+
+import com.paradigmas.game.ParadigmersAdventure;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
 import com.paradigmas.game.utils.ScreenType;
@@ -13,7 +11,7 @@ import static com.paradigmas.game.utils.FontType.*;
 import static com.paradigmas.game.utils.ScreenType.*;
 
 public class PauseScreen extends SuperScreen {
-    public PauseScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
+    public PauseScreen(ParadigmersAdventure game, String backgroundTexturePath, String backgroundMusicPath) {
         super(game, backgroundTexturePath, backgroundMusicPath);
 
         ButtonAction[] actions = {
@@ -26,26 +24,26 @@ public class PauseScreen extends SuperScreen {
         float buttonDistance = 0;
         for (int i = 0; i < 2; i++) {
             Button button = new Button(
-                super.game,
+                game,
                 textButtons[i],
-                super.worldWidth / 2 - 1f,
-                super.worldHeight / 2 + buttonDistance,
+                worldWidth / 2f - 1f,
+                worldHeight / 2f + buttonDistance,
                 2f,
                 1f,
                 actions[i]
             );
-            super.addButton(button);
+            addButton(button);
             buttonDistance -= 1.5f;
         }
     }
 
     @Override
     public void draw(float delta) {
-        GlyphLayout layout = new GlyphLayout(super.game.getFontHashMap().get(TITLE), "Pausado");
+        GlyphLayout layout = new GlyphLayout(game.getFontHashMap().get(TITLE), "Pausado");
         float textWidth = layout.width;
         float textHeight = layout.height;
-        super.game.getFontHashMap().get(TITLE).draw(
-            super.game.getBatch(),
+        game.getFontHashMap().get(TITLE).draw(
+            game.getBatch(),
             "Pausado",
             (worldWidth - textWidth) / 2,
             (worldHeight + textHeight) / 2 + 1.9f
@@ -54,12 +52,12 @@ public class PauseScreen extends SuperScreen {
 
     public void changeScreen(ScreenType screenType) {
         if (screenType == MAIN_SCREEN) {
-            super.game.getScreenManager().getScreen(BATTLE_SCREEN).getBackgroundMusic().stop();
-            super.game.getScreenManager().showScreen(screenType);
+            game.getScreenManager().getScreen(BATTLE_SCREEN).getBackgroundMusic().stop();
+            game.getScreenManager().showScreen(screenType);
             return;
         }
 
-        super.game.getScreenManager().showScreen(screenType);
+        game.getScreenManager().showScreen(screenType);
     }
 
     @Override

@@ -1,11 +1,10 @@
 package com.paradigmas.game.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.paradigmas.game.Main;
+
+import com.paradigmas.game.ParadigmersAdventure;
 import com.paradigmas.game.entities.Enemy;
 import com.paradigmas.game.entities.Paradigmer;
 import com.paradigmas.game.questions.Question;
@@ -25,145 +24,184 @@ import static com.paradigmas.game.utils.BattleStatus.*;
 public class BattleScreen extends SuperScreen {
     private final Quiz quiz;
     private final Enemy enemy;
+    private final float lifeDecayRateParadigmer;
+    private final float lifeDecayRateEnemy;
     private final Paradigmer paradigmer;
     private final Sprite uiTextSprite;
     private final Sprite uiLifeBarSprite;
     private final Sprite[] uiLifeBarChunkSprite = new Sprite[3];
     private final Sprite uiQuestionSprite;
     private final String backgroundTexturePath;
+
     private BattleStatus status;
-    private Question actualQuestion;
-    private int actualAnswer;
     private boolean isCorrect;
     private boolean hasProcessedTouch;
+    private float currentLifeEnemy;
+    private float currentLifeParadigmer;
+    private float lifeDecayTimeEnemy;
+    private float lifeDecayTimeParadigmer;
     private float timePassed;
     private float timeText;
+    private int actualAnswer;
     private int currentCharIndex;
+    private Question actualQuestion;
 
-    public BattleScreen(Main game, String backgroundTexturePath, String backgroundMusicPath, Quiz quiz, Enemy enemy, Paradigmer paradigmer) {
+
+    public BattleScreen(ParadigmersAdventure game, String backgroundTexturePath, String backgroundMusicPath, Quiz quiz, Enemy enemy, Paradigmer paradigmer) {
         super(game, backgroundTexturePath, backgroundMusicPath);
         String[] lifeBarChunkSpriteColors = { "green", "red", "yellow" };
         for (int i = 0; i < 3; i++) {
             String path = "sprites/" + lifeBarChunkSpriteColors[i] + "Life.png";
             uiLifeBarChunkSprite[i] = LoadAssets.loadSprite(path, 0.2f, 0.17f);
         }
-        uiTextSprite = LoadAssets.loadSprite("sprites/uiMenu.png", 17, 3);
-        uiLifeBarSprite = LoadAssets.loadSprite("sprites/lifeBar.png", 5, 2);
-        uiQuestionSprite = LoadAssets.loadSprite("sprites/questionSelection.png", 8, 4);
-        this.quiz = quiz;
+        uiTextSprite = LoadAssets.loadSprite("sprites/uiMenu.png", 17f, 3f);
+        uiLifeBarSprite = LoadAssets.loadSprite("sprites/lifeBar.png", 5f, 2f);
+        uiQuestionSprite = LoadAssets.loadSprite("sprites/questionSelection.png", 8f, 4f);
+
+        this.backgroundTexturePath = backgroundTexturePath;
         this.enemy = enemy;
         this.paradigmer = paradigmer;
-        this.backgroundTexturePath = backgroundTexturePath;
+        this.quiz = quiz;
+
         actualAnswer = 0;
         currentCharIndex = 0;
+
+        currentLifeEnemy = enemy.getLife();
+        currentLifeParadigmer = paradigmer.getLife();
+        lifeDecayTimeEnemy = 0f;
+        lifeDecayTimeParadigmer = 0f;
+        lifeDecayRateParadigmer = 0.05f;
+        lifeDecayRateEnemy = 0.03f;
 
         status = DRAWING_QUESTION;
         actualQuestion = quiz.getQuestion();
 
         String text = "Pause";
-        ButtonAction action = () -> super.game.getScreenManager().showScreen(PAUSE_SCREEN);
+        ButtonAction action = () -> game.getScreenManager().showScreen(PAUSE_SCREEN);
         Button button = new Button(
-            super.game,
+            game,
             text,
-            super.getWorldWidth() - 1,
-            super.getWorldHeight() - 1,
+            getWorldWidth() - 1f,
+            getWorldHeight() - 1f,
             1.3f,
             1f,
             action
         );
 
-        super.addButton(button);
+        addButton(button);
 
         initializeButtons();
+
     }
 
     @Override
     public void draw(float delta) {
         //sprite inimigo
-        enemy.getSprite().setPosition(super.worldWidth/2 + 0.5f, super.worldHeight/2 - 0.9f);
+        enemy.getSprite().setPosition(worldWidth / 2f + 0.5f, worldHeight / 2f - 0.9f);
         enemy.getSprite().draw(game.getBatch());
 
         //sprite paradigmer
-        paradigmer.getSprite().setPosition(super.worldWidth/2 - 5.5f, super.worldHeight/2 - 3.5f);
+        paradigmer.getSprite().setPosition(worldWidth / 2f - 5.5f, worldHeight / 2f - 3.5f);
         paradigmer.getSprite().draw(game.getBatch());
 
         //barra de vida do inimigo
-        drawEnemyLifeBar();
+        drawEnemyLifeBar(delta);
 
         //Barra de vida do jogador
-        drawPlayerLifeBar();
+        drawPlayerLifeBar(delta);
 
         drawUiQuestion(delta);
     }
 
-    private void drawEnemyLifeBar() {
+    private void drawEnemyLifeBar(float delta) {
         int color;
-        if (enemy.getLife() > 100) {
+        if (currentLifeEnemy > 100) {
             color = 0;
-        } else if (enemy.getLife() > 50) {
+        } else if (currentLifeEnemy > 50) {
             color = 2;
         } else {
             color = 1;
         }
 
-        int nLife = Math.min(22, 22 * enemy.getLife() / 200);
+        if (enemy.getLife() < currentLifeEnemy) {
+            lifeDecayTimeEnemy += delta;
+            if (lifeDecayTimeEnemy >= lifeDecayRateEnemy) {
+                currentLifeEnemy = Math.max(enemy.getLife(), currentLifeEnemy - 1);
+                lifeDecayTimeEnemy = 0f;
+            }
+        } else {
+            currentLifeEnemy = enemy.getLife();
+        }
 
-        uiLifeBarSprite.setPosition(0, super.worldHeight - 2);
+        int nLife = Math.min(22, 22 * (int) currentLifeEnemy / 200);
+
+        uiLifeBarSprite.setPosition(0f, worldHeight - 2f);
         uiLifeBarSprite.draw(game.getBatch());
-        super.game.getFontHashMap().get(TEXT_BATTLE).draw(
-            super.game.getBatch(),
+        game.getFontHashMap().get(TEXT_BATTLE).draw(
+            game.getBatch(),
             enemy.getName(),
             0.5f,
-            super.worldHeight - 0.5f
+            worldHeight - 0.5f
         );
         float xOffset = .0f;
         for(int i = 0; i < nLife; i++, xOffset += 0.1f) {
-            uiLifeBarChunkSprite[color].setPosition(2f + xOffset, super.worldHeight - 1.17f);
+            uiLifeBarChunkSprite[color].setPosition(2f + xOffset, worldHeight - 1.17f);
             uiLifeBarChunkSprite[color].draw(game.getBatch());
         }
     }
 
-    private void drawPlayerLifeBar() {
+    private void drawPlayerLifeBar(float delta) {
         int color;
-        if (paradigmer.getLife() > 50) {
+        if (currentLifeParadigmer > 50) {
             color = 0;
-        } else if (paradigmer.getLife() > 25) {
+        } else if (currentLifeParadigmer > 25) {
             color = 2;
         } else {
             color = 1;
         }
 
-        int nLife = Math.min(22, 22 * paradigmer.getLife() / 100);
+        if (paradigmer.getLife() < currentLifeParadigmer) {
+            lifeDecayTimeParadigmer += delta;
+            if (lifeDecayTimeParadigmer >= lifeDecayRateParadigmer) {
+                currentLifeParadigmer = Math.max(paradigmer.getLife(), currentLifeParadigmer - 1);
+                lifeDecayTimeParadigmer = 0f;
+            }
+        } else {
+            currentLifeParadigmer = paradigmer.getLife();
+        }
 
-        uiLifeBarSprite.setPosition(super.worldWidth - 4.6f, 2.9f);
+        int nLife = Math.min(22, 22 * (int) currentLifeParadigmer / 100);
+
+        uiLifeBarSprite.setPosition(worldWidth - 4.6f, 2.9f);
         uiLifeBarSprite.draw(game.getBatch());
-        super.game.getFontHashMap().get(TEXT_BATTLE).draw(
-            super.game.getBatch(),
+        game.getFontHashMap().get(TEXT_BATTLE).draw(
+            game.getBatch(),
             paradigmer.getName(),
-            super.worldWidth - 4.1f,
+            worldWidth - 4.1f,
             4.4f
         );
-        String playLifeString = paradigmer.getLife() + "/100";
-        super.game.getFontHashMap().get(TEXT_BATTLE).draw(
-            super.game.getBatch(),
+        String playLifeString = (int) currentLifeParadigmer + "/100";
+        game.getFontHashMap().get(TEXT_BATTLE).draw(
+            game.getBatch(),
             playLifeString,
-            super.worldWidth - 2.5f,
+            worldWidth - 2.5f,
             3.57f
         );
+
         float xOffset = .0f;
         for(int i = 0; i < nLife; i++, xOffset += 0.1f) {
-            uiLifeBarChunkSprite[color].setPosition(super.worldWidth - 2.6f + xOffset, 3.73f);
+            uiLifeBarChunkSprite[color].setPosition(worldWidth - 2.6f + xOffset, 3.73f);
             uiLifeBarChunkSprite[color].draw(game.getBatch());
         }
     }
 
-    void drawUiQuestion(float delta) {
+    private void drawUiQuestion(float delta) {
         //caixa onde o texto fica
         uiTextSprite.setPosition(-0.4f, -0.4f);
         uiTextSprite.draw(game.getBatch());
         if (status == DRAWING_QUESTION || status == WAITING_ANSWER) {
             //caixa de respostas
-            uiQuestionSprite.setPosition(super.worldWidth - 7.69f, -0.6f);
+            uiQuestionSprite.setPosition(worldWidth - 7.69f, -0.6f);
             uiQuestionSprite.draw(game.getBatch());
         }
         String textToDraw;
@@ -191,8 +229,8 @@ public class BattleScreen extends SuperScreen {
         float x = 0.5f;
         float y = 2f;
         int alignment = Align.left;
-        super.game.getFontHashMap().get(TEXT_QUESTION).draw(
-            super.game.getBatch(),
+        game.getFontHashMap().get(TEXT_QUESTION).draw(
+            game.getBatch(),
             textToDraw,
             x,
             y,
@@ -220,11 +258,12 @@ public class BattleScreen extends SuperScreen {
                     hasProcessedTouch = true;
                     if (actualAnswer < 3) {
                         actualAnswer++;
+                        currentCharIndex = 0;
                     } else {
                         status = DRAWING_QUESTION;
                         actualAnswer = 0;
+                        currentCharIndex = actualQuestion.getQuestion().length();
                     }
-                    currentCharIndex = 0;
                 } else if (!Gdx.input.isTouched()) {
                     hasProcessedTouch = false;
                 }
@@ -232,7 +271,7 @@ public class BattleScreen extends SuperScreen {
 
             case ANSWERED:
                 currentCharIndex = 0;
-                super.removeButtons(1); // Remove todos os botões de responder questão
+                removeButtons(1); // Remove todos os botões de responder questão
                 if (isCorrect) {
                     paradigmer.hit();
                     enemy.causeDamage(paradigmer.getConsecutiveHits());
@@ -271,14 +310,14 @@ public class BattleScreen extends SuperScreen {
 
 
     private void setEndGameScreen(boolean result) {
-        ScreenManager screenManager = super.game.getScreenManager();
+        ScreenManager screenManager = game.getScreenManager();
         HashMap<ScreenType, SuperScreen> screens = screenManager.getScreens();
         screens.remove(END_SCREEN);
 
-        super.backgroundMusic.stop();
+        backgroundMusic.stop();
 
         String backgroundMusicPath = "sounds/victoryMusic.mp3";
-        EndGameScreen endGameScreen = new EndGameScreen(super.game, backgroundTexturePath, backgroundMusicPath, result);
+        EndGameScreen endGameScreen = new EndGameScreen(game, backgroundTexturePath, backgroundMusicPath, result);
         screens.put(END_SCREEN, endGameScreen);
         screenManager.showScreen(END_SCREEN);
     }
@@ -286,7 +325,7 @@ public class BattleScreen extends SuperScreen {
     @Override
     public void show() {
         super.show();
-        super.backgroundMusic.play();
+        backgroundMusic.play();
     }
 
     @Override
@@ -309,6 +348,10 @@ public class BattleScreen extends SuperScreen {
         super.dispose();
         uiTextSprite.getTexture().dispose();
         uiLifeBarSprite.getTexture().dispose();
+        uiQuestionSprite.getTexture().dispose();
+        for (Sprite uiLifeBarChunkSprite : uiLifeBarChunkSprite) {
+            uiLifeBarChunkSprite.getTexture().dispose();
+        }
     }
 
     private String breakText(String text, float delta) {
@@ -344,16 +387,16 @@ public class BattleScreen extends SuperScreen {
                 ButtonAction action = () -> questionAnswered(option);
 
                 Button button = new Button(
-                    super.game,
+                    game,
                     options[cont],
-                    super.worldWidth - 7f + buttonDistanceX,
+                    worldWidth - 7f + buttonDistanceX,
                     1.7f - buttonDistanceY,
                     3f,
                     1f,
                     action
                 );
 
-                super.addButton(button);
+                addButton(button);
                 buttonDistanceX += 3.7f;
                 cont++;
             }

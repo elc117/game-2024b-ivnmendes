@@ -1,8 +1,8 @@
 package com.paradigmas.game.screens;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.paradigmas.game.Main;
+
+import com.paradigmas.game.ParadigmersAdventure;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
 
@@ -10,33 +10,33 @@ import static com.paradigmas.game.utils.FontType.TITLE;
 import static com.paradigmas.game.utils.ScreenType.MAIN_SCREEN;
 
 public class AboutScreen extends SuperScreen {
-    public AboutScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
+    public AboutScreen(ParadigmersAdventure game, String backgroundTexturePath, String backgroundMusicPath) {
         super(game, backgroundTexturePath, backgroundMusicPath);
 
         String text = "<-";
-        ButtonAction action = () -> super.game.getScreenManager().showScreen(MAIN_SCREEN);
+        ButtonAction action = () -> game.getScreenManager().showScreen(MAIN_SCREEN);
         Button button = new Button(
-            super.game,
+            game,
             text,
-            super.getWorldWidth() - 1,
+            getWorldWidth() - 1,
             0,
             1.3f,
             1f,
             action
         );
 
-        super.addButton(button);
+        addButton(button);
     }
 
     @Override
     public void draw(float delta) {
         GlyphLayout layout = new GlyphLayout(
-            super.game.getFontHashMap().get(TITLE),
+            game.getFontHashMap().get(TITLE),
             "Sobre"
         );
         float textWidth = layout.width;
-        super.game.getFontHashMap().get(TITLE).draw(
-            super.game.getBatch(),
+        game.getFontHashMap().get(TITLE).draw(
+            game.getBatch(),
             "Sobre",
             (worldWidth - textWidth) / 2,
             worldHeight
@@ -62,9 +62,4 @@ public class AboutScreen extends SuperScreen {
     public void hide() {
 
     }
-
-    public void dispose() {
-        super.dispose();
-    }
-
 }

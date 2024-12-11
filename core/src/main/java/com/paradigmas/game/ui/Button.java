@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.paradigmas.game.Main;
+import com.paradigmas.game.ParadigmersAdventure;
 import com.paradigmas.game.utils.LoadAssets;
 
 import static com.paradigmas.game.utils.FontType.*;
@@ -16,7 +16,7 @@ public class Button {
     private final Skin skin;
     private final TextureAtlas buttonAtlas;
 
-    public Button(Main game, String buttonText, float posX, float posY, float buttonWidth, float buttonHeight, ButtonAction action) {
+    public Button(ParadigmersAdventure game, String buttonText, float posX, float posY, float buttonWidth, float buttonHeight, ButtonAction action) {
         skin = LoadAssets.loadSkin("ui/uiskin.json");
         buttonAtlas = LoadAssets.loadAtlas("ui/uiskin.atlas");
         skin.addRegions(buttonAtlas);

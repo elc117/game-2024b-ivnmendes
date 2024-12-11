@@ -9,26 +9,23 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.paradigmas.game.Main;
+import com.paradigmas.game.ParadigmersAdventure;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.utils.LoadAssets;
-import com.paradigmas.game.utils.ScreenType;
 
 import java.util.ArrayList;
 
-import static com.paradigmas.game.utils.ScreenType.SELECT_SCREEN;
-
 public abstract class SuperScreen implements Screen {
-    protected final Main game;
-    protected Texture backgroundTexture;
-    protected Music backgroundMusic;
-    protected ArrayList<Button> buttons;
-    protected Stage stage;
+    protected final ParadigmersAdventure game;
 
+    protected ArrayList<Button> buttons;
     protected float worldWidth;
     protected float worldHeight;
+    protected Texture backgroundTexture;
+    protected Music backgroundMusic;
+    protected Stage stage;
 
-    public SuperScreen(final Main game, String backgroundTexturePath, String backgroundMusicPath) {
+    public SuperScreen(final ParadigmersAdventure game, String backgroundTexturePath, String backgroundMusicPath) {
         worldWidth = game.getViewport().getWorldWidth();
         worldHeight = game.getViewport().getWorldHeight();
 
@@ -118,7 +115,7 @@ public abstract class SuperScreen implements Screen {
         }
     }
 
-    public Main getGame() {
+    public ParadigmersAdventure getGame() {
         return game;
     }
 

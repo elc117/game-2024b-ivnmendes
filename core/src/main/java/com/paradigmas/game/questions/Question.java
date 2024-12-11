@@ -1,7 +1,5 @@
 package com.paradigmas.game.questions;
 
-import com.badlogic.gdx.utils.Null;
-
 public class Question {
     private String question;
     private String[] options;
@@ -11,12 +9,6 @@ public class Question {
         this.question = question;
         this.options = options;
         this.correctAnswer = correctAnswer;
-    }
-
-    public Question() {
-        this.question = "";
-        this.options = new String[4];
-        this.correctAnswer = 1;
     }
 
     public boolean answerQuestion(int answer) {

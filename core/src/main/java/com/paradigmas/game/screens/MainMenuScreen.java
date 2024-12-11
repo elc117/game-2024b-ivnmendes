@@ -1,20 +1,18 @@
 package com.paradigmas.game.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.paradigmas.game.Main;
+
+import com.paradigmas.game.ParadigmersAdventure;
 import com.paradigmas.game.ui.Button;
 import com.paradigmas.game.ui.ButtonAction;
-import com.paradigmas.game.utils.ScreenType;
 
 import static com.paradigmas.game.utils.FontType.TITLE;
 import static com.paradigmas.game.utils.ScreenType.*;
 
 public class MainMenuScreen extends SuperScreen {
-    public MainMenuScreen(Main game, String backgroundTexturePath, String backgroundMusicPath) {
+    public MainMenuScreen(ParadigmersAdventure game, String backgroundTexturePath, String backgroundMusicPath) {
         super(game, backgroundTexturePath, backgroundMusicPath);
         String[] textButtons = {"Jogar", "Sobre", "Sair"};
         ButtonAction[] action = {
@@ -26,15 +24,15 @@ public class MainMenuScreen extends SuperScreen {
         float buttonDistance = 0;
         for (int i = 0; i < 3; i++) {
             Button button = new Button(
-                super.game,
+                game,
                 textButtons[i],
-                super.worldWidth / 2 - 1f,
-                super.worldHeight / 2 + buttonDistance,
+                worldWidth / 2f - 1f,
+                worldHeight / 2f + buttonDistance,
                 2f,
                 1f,
                 action[i]
             );
-            super.addButton(button);
+            addButton(button);
             buttonDistance -= 1.5f;
         }
 
@@ -44,17 +42,17 @@ public class MainMenuScreen extends SuperScreen {
     public void draw(float delta) {
         String text = "Paradigmer's Adventure";
         GlyphLayout layout = new GlyphLayout(
-            super.game.getFontHashMap().get(TITLE),
+            game.getFontHashMap().get(TITLE),
             text
         );
         float textWidth = layout.width;
         float textHeight = layout.height;
-        float x = (worldWidth - textWidth) / 2 + 2.7f;
-        float y = (worldHeight + textHeight) / 2 + 3f;
-        float targetWidth = super.worldWidth;
+        float x = (worldWidth - textWidth) / 2f + 2.7f;
+        float y = (worldHeight + textHeight) / 2f + 3f;
+        float targetWidth = worldWidth;
         int alignment = Align.center;
-        super.game.getFontHashMap().get(TITLE).draw(
-            super.game.getBatch(),
+        game.getFontHashMap().get(TITLE).draw(
+            game.getBatch(),
             text,
             x,
             y,
@@ -67,7 +65,7 @@ public class MainMenuScreen extends SuperScreen {
     @Override
     public void show() {
         super.show();
-        super.backgroundMusic.play();
+        backgroundMusic.play();
     }
 
     @Override
@@ -88,10 +86,5 @@ public class MainMenuScreen extends SuperScreen {
     @Override
     public void hide() {
 
-    }
-
-    @Override
-    public void dispose() {
-        super.dispose();
     }
 }
